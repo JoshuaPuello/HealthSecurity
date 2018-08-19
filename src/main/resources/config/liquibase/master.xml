@@ -7,6 +7,13 @@
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180819072408_added_entity_Persona.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180819072647_added_entity_Usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819145332_added_entity_Reporte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819145530_added_entity_Respuesta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819145646_added_entity_AreaRiesgo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819145830_added_entity_TipoRiesgo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819150348_added_entity_Wiki.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819150518_added_entity_Tema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819150625_added_entity_Categoria.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

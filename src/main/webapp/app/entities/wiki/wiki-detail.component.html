@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="wiki">
+            <h2><span jhiTranslate="healthSecurityApp.wiki.detail.title">Wiki</span> {{wiki.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="healthSecurityApp.wiki.titulo">Titulo</span></dt>
+                <dd>
+                    <span>{{wiki.titulo}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.wiki.imagen">Imagen</span></dt>
+                <dd>
+                    <div *ngIf="wiki.imagen">
+                        <a (click)="openFile(wiki.imagenContentType, wiki.imagen)">
+                            <img [src]="'data:' + wiki.imagenContentType + ';base64,' + wiki.imagen" style="max-width: 100%;" alt="wiki image"/>
+                        </a>
+                        {{wiki.imagenContentType}}, {{byteSize(wiki.imagen)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.wiki.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{wiki.descripcion}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wiki', wiki.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

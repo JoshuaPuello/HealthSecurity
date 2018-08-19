@@ -9,6 +9,13 @@
                 "main": "Entidades",
                 "persona": "Persona",
                 "usuario": "Usuario",
+                "reporte": "Reporte",
+                "respuesta": "Respuesta",
+                "areaRiesgo": "Area Riesgo",
+                "tipoRiesgo": "Tipo Riesgo",
+                "wiki": "Wiki",
+                "tema": "Tema",
+                "categoria": "Categoria",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,0 +1,10 @@
+{
+    "healthSecurityApp": {
+        "ValoracionEnum" : {
+            "null": "",
+            "LEVE": "LEVE",
+            "MODERADO": "MODERADO",
+            "CRITICO": "CRITICO"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+
+{
+    "healthSecurityApp": {
+        "areaRiesgo" : {
+            "home": {
+                "title": "Area Riesgos",
+                "createLabel": "Crear nuevo Area Riesgo",
+                "createOrEditLabel": "Crear o editar Area Riesgo"
+            },
+            "created": "Un nuevo Area Riesgo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Area Riesgo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Area Riesgo ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Area Riesgo {{ id }}?"
+            },
+            "detail": {
+                "title": "Area Riesgo"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion"
+        }
+    }
+}

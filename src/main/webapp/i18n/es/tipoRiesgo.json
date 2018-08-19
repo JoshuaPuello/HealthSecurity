@@ -1,0 +1,23 @@
+
+{
+    "healthSecurityApp": {
+        "tipoRiesgo" : {
+            "home": {
+                "title": "Tipo Riesgos",
+                "createLabel": "Crear nuevo Tipo Riesgo",
+                "createOrEditLabel": "Crear o editar Tipo Riesgo"
+            },
+            "created": "Un nuevo Tipo Riesgo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipo Riesgo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipo Riesgo ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipo Riesgo {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Riesgo"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion"
+        }
+    }
+}

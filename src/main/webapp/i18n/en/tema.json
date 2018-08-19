@@ -1,0 +1,23 @@
+
+{
+    "healthSecurityApp": {
+        "tema" : {
+            "home": {
+                "title": "Temas",
+                "createLabel": "Create a new Tema",
+                "createOrEditLabel": "Create or edit a Tema"
+            },
+            "created": "A new Tema is created with identifier {{ param }}",
+            "updated": "A Tema is updated with identifier {{ param }}",
+            "deleted": "A Tema is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tema {{ id }}?"
+            },
+            "detail": {
+                "title": "Tema"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion"
+        }
+    }
+}
