@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="healthSecurityApp.persona.home.title">Personas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-persona" [routerLink]="['/persona/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="healthSecurityApp.persona.home.createLabel">
+            Create new Persona
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="personas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="documento"><span jhiTranslate="healthSecurityApp.persona.documento">Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="primer_nombre"><span jhiTranslate="healthSecurityApp.persona.primer_nombre">Primer Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="segundo_nombre"><span jhiTranslate="healthSecurityApp.persona.segundo_nombre">Segundo Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="primer_apellido"><span jhiTranslate="healthSecurityApp.persona.primer_apellido">Primer Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="segundo_apellido"><span jhiTranslate="healthSecurityApp.persona.segundo_apellido">Segundo Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="correo"><span jhiTranslate="healthSecurityApp.persona.correo">Correo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="direccion"><span jhiTranslate="healthSecurityApp.persona.direccion">Direccion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telefono"><span jhiTranslate="healthSecurityApp.persona.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nacimiento"><span jhiTranslate="healthSecurityApp.persona.nacimiento">Nacimiento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tipo_documento"><span jhiTranslate="healthSecurityApp.persona.tipo_documento">Tipo Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let persona of personas ;trackBy: trackId">
+                <td><a [routerLink]="['/persona', persona.id, 'view' ]">{{persona.id}}</a></td>
+                <td>{{persona.documento}}</td>
+                <td>{{persona.primer_nombre}}</td>
+                <td>{{persona.segundo_nombre}}</td>
+                <td>{{persona.primer_apellido}}</td>
+                <td>{{persona.segundo_apellido}}</td>
+                <td>{{persona.correo}}</td>
+                <td>{{persona.direccion}}</td>
+                <td>{{persona.telefono}}</td>
+                <td>{{persona.nacimiento | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'healthSecurityApp.TipoDocumento.' + persona.tipo_documento}}">{{persona.tipo_documento}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/persona', persona.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/persona', persona.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'persona/'+ persona.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="personas && personas.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

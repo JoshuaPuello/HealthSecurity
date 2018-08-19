@@ -1,0 +1,31 @@
+
+{
+    "healthSecurityApp": {
+        "persona" : {
+            "home": {
+                "title": "Personas",
+                "createLabel": "Crear nuevo Persona",
+                "createOrEditLabel": "Crear o editar Persona"
+            },
+            "created": "Un nuevo Persona ha sido creado con el identificador {{ param }}",
+            "updated": "Un Persona ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Persona ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Persona {{ id }}?"
+            },
+            "detail": {
+                "title": "Persona"
+            },
+            "documento": "Documento",
+            "primer_nombre": "Primer Nombre",
+            "segundo_nombre": "Segundo Nombre",
+            "primer_apellido": "Primer Apellido",
+            "segundo_apellido": "Segundo Apellido",
+            "correo": "Correo",
+            "direccion": "Direccion",
+            "telefono": "Telefono",
+            "nacimiento": "Nacimiento",
+            "tipo_documento": "Tipo Documento"
+        }
+    }
+}

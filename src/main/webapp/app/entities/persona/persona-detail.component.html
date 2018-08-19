@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="persona">
+            <h2><span jhiTranslate="healthSecurityApp.persona.detail.title">Persona</span> {{persona.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="healthSecurityApp.persona.documento">Documento</span></dt>
+                <dd>
+                    <span>{{persona.documento}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.primer_nombre">Primer Nombre</span></dt>
+                <dd>
+                    <span>{{persona.primer_nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.segundo_nombre">Segundo Nombre</span></dt>
+                <dd>
+                    <span>{{persona.segundo_nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.primer_apellido">Primer Apellido</span></dt>
+                <dd>
+                    <span>{{persona.primer_apellido}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.segundo_apellido">Segundo Apellido</span></dt>
+                <dd>
+                    <span>{{persona.segundo_apellido}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.correo">Correo</span></dt>
+                <dd>
+                    <span>{{persona.correo}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.direccion">Direccion</span></dt>
+                <dd>
+                    <span>{{persona.direccion}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.telefono">Telefono</span></dt>
+                <dd>
+                    <span>{{persona.telefono}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.nacimiento">Nacimiento</span></dt>
+                <dd>
+                    <span>{{persona.nacimiento}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.persona.tipo_documento">Tipo Documento</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'healthSecurityApp.TipoDocumento.' + persona.tipo_documento}}">{{persona.tipo_documento}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/persona', persona.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
