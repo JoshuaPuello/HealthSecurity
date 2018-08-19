@@ -17,7 +17,8 @@
                 "title": "Tema"
             },
             "nombre": "Nombre",
-            "descripcion": "Descripcion"
+            "descripcion": "Descripcion",
+            "wiki": "Wiki"
         }
     }
 }

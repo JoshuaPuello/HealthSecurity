@@ -3,6 +3,8 @@ package com.hs.web.rest;
 import com.hs.HealthSecurityApp;
 
 import com.hs.domain.Wiki;
+import com.hs.domain.Tema;
+import com.hs.domain.Categoria;
 import com.hs.repository.WikiRepository;
 import com.hs.service.WikiService;
 import com.hs.web.rest.errors.ExceptionTranslator;
@@ -99,6 +101,16 @@ public class WikiResourceIntTest {
             .imagen(DEFAULT_IMAGEN)
             .imagenContentType(DEFAULT_IMAGEN_CONTENT_TYPE)
             .descripcion(DEFAULT_DESCRIPCION);
+        // Add required entity
+        Tema tema = TemaResourceIntTest.createEntity(em);
+        em.persist(tema);
+        em.flush();
+        wiki.setTema(tema);
+        // Add required entity
+        Categoria categoria = CategoriaResourceIntTest.createEntity(em);
+        em.persist(categoria);
+        em.flush();
+        wiki.setCategoria(categoria);
         return wiki;
     }
 

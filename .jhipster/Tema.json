@@ -1,7 +1,14 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "",
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "wiki",
+            "otherEntityName": "wiki",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "tema"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nombre",

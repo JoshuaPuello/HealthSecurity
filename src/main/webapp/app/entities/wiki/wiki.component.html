@@ -18,6 +18,8 @@
             <th jhiSortBy="titulo"><span jhiTranslate="healthSecurityApp.wiki.titulo">Titulo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="imagen"><span jhiTranslate="healthSecurityApp.wiki.imagen">Imagen</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="descripcion"><span jhiTranslate="healthSecurityApp.wiki.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tema.id"><span jhiTranslate="healthSecurityApp.wiki.tema">Tema</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="categoria.id"><span jhiTranslate="healthSecurityApp.wiki.categoria">Categoria</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -32,6 +34,16 @@
                     <span *ngIf="wiki.imagen">{{wiki.imagenContentType}}, {{byteSize(wiki.imagen)}}</span>
                 </td>
                 <td>{{wiki.descripcion}}</td>
+                <td>
+                    <div *ngIf="wiki.tema">
+                        <a [routerLink]="['../tema', wiki.tema?.id, 'view' ]" >{{wiki.tema?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="wiki.categoria">
+                        <a [routerLink]="['../categoria', wiki.categoria?.id, 'view' ]" >{{wiki.categoria?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

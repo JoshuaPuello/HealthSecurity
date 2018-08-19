@@ -18,7 +18,9 @@
             },
             "titulo": "Titulo",
             "imagen": "Imagen",
-            "descripcion": "Descripcion"
+            "descripcion": "Descripcion",
+            "tema": "Tema",
+            "categoria": "Categoria"
         }
     }
 }

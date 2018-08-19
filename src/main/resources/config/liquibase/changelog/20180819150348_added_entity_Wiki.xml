@@ -37,6 +37,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="tema_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="categoria_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
