@@ -28,7 +28,13 @@ public interface RespuestaService {
      */
     Page<Respuesta> findAll(Pageable pageable);
 
-
+    /**
+     * Get all the Respuesta with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    Page<Respuesta> findAllWithEagerRelationships(Pageable pageable);
+    
     /**
      * Get the "id" respuesta.
      *

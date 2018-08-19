@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HealthSecuritySharedModule } from 'app/shared';
+import { HealthSecurityAdminModule } from 'app/admin/admin.module';
 import {
     UsuarioComponent,
     UsuarioDetailComponent,
@@ -15,7 +16,7 @@ import {
 const ENTITY_STATES = [...usuarioRoute, ...usuarioPopupRoute];
 
 @NgModule({
-    imports: [HealthSecuritySharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [HealthSecuritySharedModule, HealthSecurityAdminModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         UsuarioComponent,
         UsuarioDetailComponent,

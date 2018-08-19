@@ -1,10 +1,13 @@
 package com.hs.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -27,6 +30,10 @@ public class TipoRiesgo implements Serializable {
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
+
+    @ManyToMany(mappedBy = "tipoRiesgos")
+    @JsonIgnore
+    private Set<Respuesta> respuestas = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -61,6 +68,31 @@ public class TipoRiesgo implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Set<Respuesta> getRespuestas() {
+        return respuestas;
+    }
+
+    public TipoRiesgo respuestas(Set<Respuesta> respuestas) {
+        this.respuestas = respuestas;
+        return this;
+    }
+
+    public TipoRiesgo addRespuesta(Respuesta respuesta) {
+        this.respuestas.add(respuesta);
+        respuesta.getTipoRiesgos().add(this);
+        return this;
+    }
+
+    public TipoRiesgo removeRespuesta(Respuesta respuesta) {
+        this.respuestas.remove(respuesta);
+        respuesta.getTipoRiesgos().remove(this);
+        return this;
+    }
+
+    public void setRespuestas(Set<Respuesta> respuestas) {
+        this.respuestas = respuestas;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

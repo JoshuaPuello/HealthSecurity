@@ -16,7 +16,9 @@
             "detail": {
                 "title": "Usuario"
             },
-            "cargo": "Cargo"
+            "cargo": "Cargo",
+            "user": "User",
+            "persona": "Persona"
         }
     }
 }

@@ -18,6 +18,7 @@
             <th jhiSortBy="valoracion"><span jhiTranslate="healthSecurityApp.respuesta.valoracion">Valoracion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="descripcion"><span jhiTranslate="healthSecurityApp.respuesta.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="estado"><span jhiTranslate="healthSecurityApp.respuesta.estado">Estado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="reporte.id"><span jhiTranslate="healthSecurityApp.respuesta.reporte">Reporte</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +28,11 @@
                 <td jhiTranslate="{{'healthSecurityApp.ValoracionEnum.' + respuesta.valoracion}}">{{respuesta.valoracion}}</td>
                 <td>{{respuesta.descripcion}}</td>
                 <td jhiTranslate="{{'healthSecurityApp.EstadoEnum.' + respuesta.estado}}">{{respuesta.estado}}</td>
+                <td>
+                    <div *ngIf="respuesta.reporte">
+                        <a [routerLink]="['../reporte', respuesta.reporte?.id, 'view' ]" >{{respuesta.reporte?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

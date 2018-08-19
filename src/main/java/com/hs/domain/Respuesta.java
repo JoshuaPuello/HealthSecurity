@@ -5,6 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import com.hs.domain.enumeration.ValoracionEnum;
@@ -37,6 +39,25 @@ public class Respuesta implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
     private EstadoEnum estado;
+
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private Reporte reporte;
+
+    @ManyToMany
+    @NotNull
+    @JoinTable(name = "respuesta_area_riesgo",
+               joinColumns = @JoinColumn(name = "respuestas_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "area_riesgos_id", referencedColumnName = "id"))
+    private Set<AreaRiesgo> areaRiesgos = new HashSet<>();
+
+    @ManyToMany
+    @NotNull
+    @JoinTable(name = "respuesta_tipo_riesgo",
+               joinColumns = @JoinColumn(name = "respuestas_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "tipo_riesgos_id", referencedColumnName = "id"))
+    private Set<TipoRiesgo> tipoRiesgos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -84,6 +105,69 @@ public class Respuesta implements Serializable {
 
     public void setEstado(EstadoEnum estado) {
         this.estado = estado;
+    }
+
+    public Reporte getReporte() {
+        return reporte;
+    }
+
+    public Respuesta reporte(Reporte reporte) {
+        this.reporte = reporte;
+        return this;
+    }
+
+    public void setReporte(Reporte reporte) {
+        this.reporte = reporte;
+    }
+
+    public Set<AreaRiesgo> getAreaRiesgos() {
+        return areaRiesgos;
+    }
+
+    public Respuesta areaRiesgos(Set<AreaRiesgo> areaRiesgos) {
+        this.areaRiesgos = areaRiesgos;
+        return this;
+    }
+
+    public Respuesta addAreaRiesgo(AreaRiesgo areaRiesgo) {
+        this.areaRiesgos.add(areaRiesgo);
+        areaRiesgo.getRespuestas().add(this);
+        return this;
+    }
+
+    public Respuesta removeAreaRiesgo(AreaRiesgo areaRiesgo) {
+        this.areaRiesgos.remove(areaRiesgo);
+        areaRiesgo.getRespuestas().remove(this);
+        return this;
+    }
+
+    public void setAreaRiesgos(Set<AreaRiesgo> areaRiesgos) {
+        this.areaRiesgos = areaRiesgos;
+    }
+
+    public Set<TipoRiesgo> getTipoRiesgos() {
+        return tipoRiesgos;
+    }
+
+    public Respuesta tipoRiesgos(Set<TipoRiesgo> tipoRiesgos) {
+        this.tipoRiesgos = tipoRiesgos;
+        return this;
+    }
+
+    public Respuesta addTipoRiesgo(TipoRiesgo tipoRiesgo) {
+        this.tipoRiesgos.add(tipoRiesgo);
+        tipoRiesgo.getRespuestas().add(this);
+        return this;
+    }
+
+    public Respuesta removeTipoRiesgo(TipoRiesgo tipoRiesgo) {
+        this.tipoRiesgos.remove(tipoRiesgo);
+        tipoRiesgo.getRespuestas().remove(this);
+        return this;
+    }
+
+    public void setTipoRiesgos(Set<TipoRiesgo> tipoRiesgos) {
+        this.tipoRiesgos = tipoRiesgos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

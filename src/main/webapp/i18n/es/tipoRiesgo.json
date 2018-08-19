@@ -17,7 +17,8 @@
                 "title": "Tipo Riesgo"
             },
             "nombre": "Nombre",
-            "descripcion": "Descripcion"
+            "descripcion": "Descripcion",
+            "respuesta": "Respuesta"
         }
     }
 }

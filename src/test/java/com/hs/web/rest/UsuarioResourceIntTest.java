@@ -3,6 +3,8 @@ package com.hs.web.rest;
 import com.hs.HealthSecurityApp;
 
 import com.hs.domain.Usuario;
+import com.hs.domain.User;
+import com.hs.domain.Persona;
 import com.hs.repository.UsuarioRepository;
 import com.hs.service.UsuarioService;
 import com.hs.web.rest.errors.ExceptionTranslator;
@@ -87,6 +89,16 @@ public class UsuarioResourceIntTest {
     public static Usuario createEntity(EntityManager em) {
         Usuario usuario = new Usuario()
             .cargo(DEFAULT_CARGO);
+        // Add required entity
+        User user = UserResourceIntTest.createEntity(em);
+        em.persist(user);
+        em.flush();
+        usuario.setUser(user);
+        // Add required entity
+        Persona persona = PersonaResourceIntTest.createEntity(em);
+        em.persist(persona);
+        em.flush();
+        usuario.setPersona(persona);
         return usuario;
     }
 

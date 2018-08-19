@@ -15,5 +15,7 @@
     <include file="config/liquibase/changelog/20180819150518_added_entity_Tema.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180819150625_added_entity_Categoria.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180819072647_added_entity_constraints_Usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180819145530_added_entity_constraints_Respuesta.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

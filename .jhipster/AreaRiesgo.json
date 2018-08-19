@@ -1,7 +1,15 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "",
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "respuesta",
+            "otherEntityName": "respuesta",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "areaRiesgo"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nombre",

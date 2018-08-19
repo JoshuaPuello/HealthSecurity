@@ -43,6 +43,43 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityApp.respuesta.reporte" for="field_reporte">Reporte</label>
+                    <select class="form-control" id="field_reporte" name="reporte" [(ngModel)]="respuesta.reporte" required>
+                        <option *ngIf="!editForm.value.reporte" [ngValue]="null" selected></option>
+                        <option [ngValue]="reporteOption.id === respuesta.reporte?.id ? respuesta.reporte : reporteOption" *ngFor="let reporteOption of reportes; trackBy: trackReporteById">{{reporteOption.id}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.reporte?.dirty && editForm.controls.reporte?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.reporte?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="healthSecurityApp.respuesta.areaRiesgo" for="field_areaRiesgo">Area Riesgo</label>
+                    <select class="form-control" id="field_areaRiesgo" multiple name="areaRiesgo" [(ngModel)]="respuesta.areaRiesgos" required>
+                        <option [ngValue]="getSelected(respuesta.areaRiesgos, areaRiesgoOption)" *ngFor="let areaRiesgoOption of areariesgos; trackBy: trackAreaRiesgoById">{{areaRiesgoOption.id}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.areaRiesgo?.dirty && editForm.controls.areaRiesgo?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.areaRiesgo?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="healthSecurityApp.respuesta.tipoRiesgo" for="field_tipoRiesgo">Tipo Riesgo</label>
+                    <select class="form-control" id="field_tipoRiesgo" multiple name="tipoRiesgo" [(ngModel)]="respuesta.tipoRiesgos" required>
+                        <option [ngValue]="getSelected(respuesta.tipoRiesgos, tipoRiesgoOption)" *ngFor="let tipoRiesgoOption of tiporiesgos; trackBy: trackTipoRiesgoById">{{tipoRiesgoOption.id}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.tipoRiesgo?.dirty && editForm.controls.tipoRiesgo?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tipoRiesgo?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

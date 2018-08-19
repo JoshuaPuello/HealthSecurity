@@ -33,9 +33,33 @@
             <column name="estado" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-
+            <column name="reporte_id" type="bigint">
+                <constraints unique="true" nullable="false" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="respuesta_area_riesgo">
+            <column name="area_riesgos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="respuestas_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="respuestas_id, area_riesgos_id" tableName="respuesta_area_riesgo"/>
+        
+        <createTable tableName="respuesta_tipo_riesgo">
+            <column name="tipo_riesgos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="respuestas_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="respuestas_id, tipo_riesgos_id" tableName="respuesta_tipo_riesgo"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

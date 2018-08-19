@@ -18,7 +18,10 @@
             },
             "valoracion": "Valoracion",
             "descripcion": "Descripcion",
-            "estado": "Estado"
+            "estado": "Estado",
+            "reporte": "Reporte",
+            "areaRiesgo": "Area Riesgo",
+            "tipoRiesgo": "Tipo Riesgo"
         }
     }
 }

@@ -52,6 +52,15 @@ public class RespuestaServiceImpl implements RespuestaService {
         return respuestaRepository.findAll(pageable);
     }
 
+    /**
+     * Get all the Respuesta with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    public Page<Respuesta> findAllWithEagerRelationships(Pageable pageable) {
+        return respuestaRepository.findAllWithEagerRelationships(pageable);
+    }
+    
 
     /**
      * Get one respuesta by id.
@@ -63,7 +72,7 @@ public class RespuestaServiceImpl implements RespuestaService {
     @Transactional(readOnly = true)
     public Optional<Respuesta> findOne(Long id) {
         log.debug("Request to get Respuesta : {}", id);
-        return respuestaRepository.findById(id);
+        return respuestaRepository.findOneWithEagerRelationships(id);
     }
 
     /**

@@ -1,7 +1,41 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "",
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "reporte",
+            "otherEntityName": "reporte",
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "respuesta"
+        },
+        {
+            "relationshipName": "areaRiesgo",
+            "otherEntityName": "areaRiesgo",
+            "relationshipType": "many-to-many",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "respuesta"
+        },
+        {
+            "relationshipName": "tipoRiesgo",
+            "otherEntityName": "tipoRiesgo",
+            "relationshipType": "many-to-many",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "respuesta"
+        }
+    ],
     "fields": [
         {
             "fieldName": "valoracion",

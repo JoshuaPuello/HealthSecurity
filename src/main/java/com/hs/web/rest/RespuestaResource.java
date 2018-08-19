@@ -86,14 +86,20 @@ public class RespuestaResource {
      * GET  /respuestas : get all the respuestas.
      *
      * @param pageable the pagination information
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of respuestas in body
      */
     @GetMapping("/respuestas")
     @Timed
-    public ResponseEntity<List<Respuesta>> getAllRespuestas(Pageable pageable) {
+    public ResponseEntity<List<Respuesta>> getAllRespuestas(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of Respuestas");
-        Page<Respuesta> page = respuestaService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/respuestas");
+        Page<Respuesta> page;
+        if (eagerload) {
+            page = respuestaService.findAllWithEagerRelationships(pageable);
+        } else {
+            page = respuestaService.findAll(pageable);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, String.format("/api/respuestas?eagerload=%b", eagerload));
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

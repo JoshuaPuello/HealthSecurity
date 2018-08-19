@@ -3,6 +3,9 @@ package com.hs.web.rest;
 import com.hs.HealthSecurityApp;
 
 import com.hs.domain.Respuesta;
+import com.hs.domain.Reporte;
+import com.hs.domain.AreaRiesgo;
+import com.hs.domain.TipoRiesgo;
 import com.hs.repository.RespuestaRepository;
 import com.hs.service.RespuestaService;
 import com.hs.web.rest.errors.ExceptionTranslator;
@@ -10,9 +13,12 @@ import com.hs.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -23,12 +29,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 
 import static com.hs.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -54,8 +62,11 @@ public class RespuestaResourceIntTest {
 
     @Autowired
     private RespuestaRepository respuestaRepository;
-
+    @Mock
+    private RespuestaRepository respuestaRepositoryMock;
     
+    @Mock
+    private RespuestaService respuestaServiceMock;
 
     @Autowired
     private RespuestaService respuestaService;
@@ -98,6 +109,21 @@ public class RespuestaResourceIntTest {
             .valoracion(DEFAULT_VALORACION)
             .descripcion(DEFAULT_DESCRIPCION)
             .estado(DEFAULT_ESTADO);
+        // Add required entity
+        Reporte reporte = ReporteResourceIntTest.createEntity(em);
+        em.persist(reporte);
+        em.flush();
+        respuesta.setReporte(reporte);
+        // Add required entity
+        AreaRiesgo areaRiesgo = AreaRiesgoResourceIntTest.createEntity(em);
+        em.persist(areaRiesgo);
+        em.flush();
+        respuesta.getAreaRiesgos().add(areaRiesgo);
+        // Add required entity
+        TipoRiesgo tipoRiesgo = TipoRiesgoResourceIntTest.createEntity(em);
+        em.persist(tipoRiesgo);
+        em.flush();
+        respuesta.getTipoRiesgos().add(tipoRiesgo);
         return respuesta;
     }
 
@@ -197,6 +223,36 @@ public class RespuestaResourceIntTest {
             .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.toString())));
     }
     
+    public void getAllRespuestasWithEagerRelationshipsIsEnabled() throws Exception {
+        RespuestaResource respuestaResource = new RespuestaResource(respuestaServiceMock);
+        when(respuestaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        MockMvc restRespuestaMockMvc = MockMvcBuilders.standaloneSetup(respuestaResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restRespuestaMockMvc.perform(get("/api/respuestas?eagerload=true"))
+        .andExpect(status().isOk());
+
+        verify(respuestaServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    public void getAllRespuestasWithEagerRelationshipsIsNotEnabled() throws Exception {
+        RespuestaResource respuestaResource = new RespuestaResource(respuestaServiceMock);
+            when(respuestaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+            MockMvc restRespuestaMockMvc = MockMvcBuilders.standaloneSetup(respuestaResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restRespuestaMockMvc.perform(get("/api/respuestas?eagerload=true"))
+        .andExpect(status().isOk());
+
+            verify(respuestaServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
 
     @Test
     @Transactional

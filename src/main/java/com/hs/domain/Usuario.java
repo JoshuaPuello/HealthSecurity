@@ -24,6 +24,16 @@ public class Usuario implements Serializable {
     @Column(name = "cargo", nullable = false)
     private String cargo;
 
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private User user;
+
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private Persona persona;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -44,6 +54,32 @@ public class Usuario implements Serializable {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Usuario user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public Usuario persona(Persona persona) {
+        this.persona = persona;
+        return this;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

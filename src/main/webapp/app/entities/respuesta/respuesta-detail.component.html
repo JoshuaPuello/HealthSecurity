@@ -17,6 +17,24 @@
                 <dd>
                     <span jhiTranslate="{{'healthSecurityApp.EstadoEnum.' + respuesta.estado}}">{{respuesta.estado}}</span>
                 </dd>
+                <dt><span jhiTranslate="healthSecurityApp.respuesta.reporte">Reporte</span></dt>
+                <dd>
+                    <div *ngIf="respuesta.reporte">
+                        <a [routerLink]="['/reporte', respuesta.reporte?.id, 'view']">{{respuesta.reporte?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.respuesta.areaRiesgo">Area Riesgo</span></dt>
+                <dd>
+                    <span *ngFor="let areaRiesgo of respuesta.areaRiesgos; let last = last">
+                        <a [routerLink]="['/area-riesgo', areaRiesgo?.id, 'view' ]">{{areaRiesgo.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityApp.respuesta.tipoRiesgo">Tipo Riesgo</span></dt>
+                <dd>
+                    <span *ngFor="let tipoRiesgo of respuesta.tipoRiesgos; let last = last">
+                        <a [routerLink]="['/tipo-riesgo', tipoRiesgo?.id, 'view' ]">{{tipoRiesgo.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"
