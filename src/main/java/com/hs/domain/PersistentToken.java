@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @see com.hs.security.PersistentTokenRememberMeServices
  */
 @Entity
-@Table(name = "jhi_persistent_token")
+@Table(name = "token")
 public class PersistentToken implements Serializable {
 
     private static final long serialVersionUID = 1L;

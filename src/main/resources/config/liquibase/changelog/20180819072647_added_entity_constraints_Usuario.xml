@@ -12,7 +12,7 @@
                                  baseTableName="usuario"
                                  constraintName="fk_usuario_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="jhi_user"/>
+                                 referencedTableName="user_credentials"/>
 
         <addForeignKeyConstraint baseColumnNames="persona_id"
                                  baseTableName="usuario"
