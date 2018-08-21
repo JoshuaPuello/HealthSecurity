@@ -78,15 +78,15 @@ jhipster:
         max-pool-size: 50
         queue-capacity: 10000
     # By default CORS is disabled. Uncomment to enable.
-    #cors:
-        #allowed-origins: "*"
-        #allowed-methods: "*"
-        #allowed-headers: "*"
-        #exposed-headers: "Link,X-Total-Count"
-        #allow-credentials: true
-        #max-age: 1800
+    cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+        allowed-headers: "*"
+        exposed-headers: "Link,X-Total-Count"
+        allow-credentials: true
+        max-age: 1800
     mail:
-        from: HealthSecurity@localhost
+        from: joshuapuello@hsplatform.com.co
     swagger:
         default-include-pattern: /api/.*
         title: HealthSecurity API

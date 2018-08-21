@@ -14,46 +14,43 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="documento"><span jhiTranslate="healthSecurityApp.persona.documento">Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="primer_nombre"><span jhiTranslate="healthSecurityApp.persona.primer_nombre">Primer Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="segundo_nombre"><span jhiTranslate="healthSecurityApp.persona.segundo_nombre">Segundo Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="primer_apellido"><span jhiTranslate="healthSecurityApp.persona.primer_apellido">Primer Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="segundo_apellido"><span jhiTranslate="healthSecurityApp.persona.segundo_apellido">Segundo Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="correo"><span jhiTranslate="healthSecurityApp.persona.correo">Correo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="direccion"><span jhiTranslate="healthSecurityApp.persona.direccion">Direccion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="telefono"><span jhiTranslate="healthSecurityApp.persona.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nacimiento"><span jhiTranslate="healthSecurityApp.persona.nacimiento">Nacimiento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tipo_documento"><span jhiTranslate="healthSecurityApp.persona.tipo_documento">Tipo Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th>Nombre</th>
+                <th>Tipo Documento</th>
+                <th>Documento</th>
+            <!-- <th jhiSortBy="primer_apellido"><span jhiTranslate="healthSecurityApp.persona.primer_apellido">Primer Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="segundo_apellido"><span jhiTranslate="healthSecurityApp.persona.segundo_apellido">Segundo Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
+            <th>Correo</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Nacimiento</th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let persona of personas ;trackBy: trackId">
-                <td><a [routerLink]="['/persona', persona.id, 'view' ]">{{persona.id}}</a></td>
+                <!-- <td><a [routerLink]="['/persona', persona.id, 'view' ]">{{persona.documento}}</a></td> -->
+                <td>{{persona.primer_nombre}} {{persona.segundo_nombre}} {{persona.primer_apellido}} {{persona.segundo_apellido}}</td>
+                <td jhiTranslate="{{'healthSecurityApp.TipoDocumento.' + persona.tipo_documento}}">{{persona.tipo_documento}}</td>
                 <td>{{persona.documento}}</td>
-                <td>{{persona.primer_nombre}}</td>
-                <td>{{persona.segundo_nombre}}</td>
-                <td>{{persona.primer_apellido}}</td>
-                <td>{{persona.segundo_apellido}}</td>
+                <!-- <td>{{persona.segundo_nombre}}</td> -->
+                <!-- <td>{{persona.segundo_apellido}}</td> -->
                 <td>{{persona.correo}}</td>
                 <td>{{persona.direccion}}</td>
                 <td>{{persona.telefono}}</td>
                 <td>{{persona.nacimiento | date:'mediumDate'}}</td>
-                <td jhiTranslate="{{'healthSecurityApp.TipoDocumento.' + persona.tipo_documento}}">{{persona.tipo_documento}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['/persona', persona.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            <!-- <span class="d-none d-md-inline">View</span> -->
                         </button>
                         <button type="submit"
                                 [routerLink]="['/persona', persona.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            <!-- <span class="d-none d-md-inline">Edit</span> -->
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'persona/'+ persona.id + '/delete'} }]"
@@ -61,7 +58,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            <!-- <span class="d-none d-md-inline">Delete</span> -->
                         </button>
                     </div>
                 </td>

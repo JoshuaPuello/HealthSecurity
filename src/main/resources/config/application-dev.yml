@@ -53,10 +53,15 @@ spring:
     liquibase:
         contexts: dev
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: mail.hsplatform.com.co
+        port: 587
+        username: joshuapuello@hsplatform.com.co
+        password: lafamiliapp
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
     messages:
         cache-duration: PT1S # 1 second, see the ISO 8601 standard
     thymeleaf:
@@ -104,7 +109,7 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: 4068feb331de7da38ef4c766273b0bad5f9d8bb7
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: HealthSecurity@localhost
+        from: joshuapuello@hsplatform.com.co
         base-url: http://127.0.0.1:8080
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:

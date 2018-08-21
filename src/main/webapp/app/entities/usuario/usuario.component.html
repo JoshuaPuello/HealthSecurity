@@ -14,23 +14,23 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="cargo"><span jhiTranslate="healthSecurityApp.usuario.cargo">Cargo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="user.login"><span jhiTranslate="healthSecurityApp.usuario.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="persona.id"><span jhiTranslate="healthSecurityApp.usuario.persona">Persona</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th>Cargo</span></th>
+            <th>Nombre usuario</span></th>
+            <th>Persona</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let usuario of usuarios ;trackBy: trackId">
-                <td><a [routerLink]="['/usuario', usuario.id, 'view' ]">{{usuario.id}}</a></td>
                 <td>{{usuario.cargo}}</td>
                 <td>
                     {{usuario.user?.login}}
                 </td>
                 <td>
                     <div *ngIf="usuario.persona">
-                        <a [routerLink]="['../persona', usuario.persona?.id, 'view' ]" >{{usuario.persona?.id}}</a>
+                        <a [routerLink]="['../persona', usuario.persona?.id, 'view' ]" >
+                            {{usuario.persona?.primer_nombre}} {{usuario.persona?.segundo_nombre}} {{usuario.persona?.primer_apellido}} {{usuario.persona?.segundo_apellido}}
+                        </a>
                     </div>
                 </td>
                 <td class="text-right">
