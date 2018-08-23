@@ -1,0 +1,9 @@
+{
+    "healthSecurityWebApp": {
+        "LugarEventoEnum" : {
+            "null": "",
+            "DENTRO_EMPRESA": "DENTRO_EMPRESA",
+            "FUERA_EMPRESA": "FUERA_EMPRESA"
+        }
+    }
+}

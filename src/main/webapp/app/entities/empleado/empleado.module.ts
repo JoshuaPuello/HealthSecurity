@@ -1,0 +1,30 @@
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { HealthSecurityWebSharedModule } from 'app/shared';
+import { HealthSecurityWebAdminModule } from 'app/admin/admin.module';
+import {
+    EmpleadoComponent,
+    EmpleadoDetailComponent,
+    EmpleadoUpdateComponent,
+    EmpleadoDeletePopupComponent,
+    EmpleadoDeleteDialogComponent,
+    empleadoRoute,
+    empleadoPopupRoute
+} from './';
+
+const ENTITY_STATES = [...empleadoRoute, ...empleadoPopupRoute];
+
+@NgModule({
+    imports: [HealthSecurityWebSharedModule, HealthSecurityWebAdminModule, RouterModule.forChild(ENTITY_STATES)],
+    declarations: [
+        EmpleadoComponent,
+        EmpleadoDetailComponent,
+        EmpleadoUpdateComponent,
+        EmpleadoDeleteDialogComponent,
+        EmpleadoDeletePopupComponent
+    ],
+    entryComponents: [EmpleadoComponent, EmpleadoUpdateComponent, EmpleadoDeleteDialogComponent, EmpleadoDeletePopupComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class HealthSecurityWebEmpleadoModule {}

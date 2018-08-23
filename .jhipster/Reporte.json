@@ -1,0 +1,82 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "respuesta",
+            "otherEntityName": "respuesta",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "reporte"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "valoracion",
+            "fieldType": "ValoracionEnum",
+            "fieldValues": "LEVE,MODERADO,CRITICO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "accinones_realizadas",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "evidencia",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "lugar_evento",
+            "fieldType": "LugarEventoEnum",
+            "fieldValues": "DENTRO_EMPRESA,FUERA_EMPRESA",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipo_evento",
+            "fieldType": "TipoEventoEnum",
+            "fieldValues": "ACCIDENTE,INCIDENTE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bLabores",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bReportado",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180823073652",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "reporte",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

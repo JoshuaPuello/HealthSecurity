@@ -1,0 +1,124 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-reporte-heading" jhiTranslate="healthSecurityWebApp.reporte.home.createOrEditLabel">Create or edit a Reporte</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!reporte.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="reporte.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.valoracion" for="field_valoracion">Valoracion</label>
+                    <select class="form-control" name="valoracion" [(ngModel)]="reporte.valoracion" id="field_valoracion"  required>
+                        <option value="LEVE">{{'healthSecurityWebApp.ValoracionEnum.LEVE' | translate}}</option>
+                        <option value="MODERADO">{{'healthSecurityWebApp.ValoracionEnum.MODERADO' | translate}}</option>
+                        <option value="CRITICO">{{'healthSecurityWebApp.ValoracionEnum.CRITICO' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.valoracion?.dirty && editForm.controls.valoracion?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.valoracion?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="reporte.nombre" required/>
+                    <div [hidden]="!(editForm.controls.nombre?.dirty && editForm.controls.nombre?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nombre?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.descripcion" for="field_descripcion">Descripcion</label>
+                    <textarea class="form-control" name="descripcion" id="field_descripcion"
+                        [(ngModel)]="reporte.descripcion" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.accinones_realizadas" for="field_accinones_realizadas">Accinones Realizadas</label>
+                    <textarea class="form-control" name="accinones_realizadas" id="field_accinones_realizadas"
+                        [(ngModel)]="reporte.accinones_realizadas" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.evidencia" for="field_evidencia">Evidencia</label>
+                    <div>
+                        <img [src]="'data:' + reporte.evidenciaContentType + ';base64,' + reporte.evidencia" style="max-height: 100px;" *ngIf="reporte.evidencia" alt="reporte image"/>
+                        <div *ngIf="reporte.evidencia" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{reporte.evidenciaContentType}}, {{byteSize(reporte.evidencia)}}</span>
+                            <button type="button" (click)="clearInputImage('evidencia', 'evidenciaContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_evidencia" (change)="setFileData($event, reporte, 'evidencia', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="evidencia" id="field_evidencia"
+                        [(ngModel)]="reporte.evidencia" />
+                    <input type="hidden" class="form-control" name="evidenciaContentType" id="field_evidenciaContentType"
+                        [(ngModel)]="reporte.evidenciaContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.lugar_evento" for="field_lugar_evento">Lugar Evento</label>
+                    <select class="form-control" name="lugar_evento" [(ngModel)]="reporte.lugar_evento" id="field_lugar_evento"  required>
+                        <option value="DENTRO_EMPRESA">{{'healthSecurityWebApp.LugarEventoEnum.DENTRO_EMPRESA' | translate}}</option>
+                        <option value="FUERA_EMPRESA">{{'healthSecurityWebApp.LugarEventoEnum.FUERA_EMPRESA' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.lugar_evento?.dirty && editForm.controls.lugar_evento?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lugar_evento?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.tipo_evento" for="field_tipo_evento">Tipo Evento</label>
+                    <select class="form-control" name="tipo_evento" [(ngModel)]="reporte.tipo_evento" id="field_tipo_evento"  required>
+                        <option value="ACCIDENTE">{{'healthSecurityWebApp.TipoEventoEnum.ACCIDENTE' | translate}}</option>
+                        <option value="INCIDENTE">{{'healthSecurityWebApp.TipoEventoEnum.INCIDENTE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.tipo_evento?.dirty && editForm.controls.tipo_evento?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tipo_evento?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.bLabores" for="field_bLabores">B Labores</label>
+                    <input type="checkbox" class="form-control" name="bLabores" id="field_bLabores"
+                        [(ngModel)]="reporte.bLabores" />
+                    <div [hidden]="!(editForm.controls.bLabores?.dirty && editForm.controls.bLabores?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.bLabores?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.bReportado" for="field_bReportado">B Reportado</label>
+                    <input type="checkbox" class="form-control" name="bReportado" id="field_bReportado"
+                        [(ngModel)]="reporte.bReportado" />
+                    <div [hidden]="!(editForm.controls.bReportado?.dirty && editForm.controls.bReportado?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.bReportado?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

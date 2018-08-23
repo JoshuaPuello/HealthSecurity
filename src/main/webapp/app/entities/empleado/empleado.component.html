@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="healthSecurityWebApp.empleado.home.title">Empleados</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-empleado" [routerLink]="['/empleado/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="healthSecurityWebApp.empleado.home.createLabel">
+            Create new Empleado
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="empleados">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tipo_documento"><span jhiTranslate="healthSecurityWebApp.empleado.tipo_documento">Tipo Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="documento"><span jhiTranslate="healthSecurityWebApp.empleado.documento">Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="primer_nombre"><span jhiTranslate="healthSecurityWebApp.empleado.primer_nombre">Primer Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="segundo_nombre"><span jhiTranslate="healthSecurityWebApp.empleado.segundo_nombre">Segundo Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="primer_apellido"><span jhiTranslate="healthSecurityWebApp.empleado.primer_apellido">Primer Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="segundo_apellido"><span jhiTranslate="healthSecurityWebApp.empleado.segundo_apellido">Segundo Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="direccion"><span jhiTranslate="healthSecurityWebApp.empleado.direccion">Direccion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telefono"><span jhiTranslate="healthSecurityWebApp.empleado.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nacimiento"><span jhiTranslate="healthSecurityWebApp.empleado.nacimiento">Nacimiento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="user.login"><span jhiTranslate="healthSecurityWebApp.empleado.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let empleado of empleados ;trackBy: trackId">
+                <td><a [routerLink]="['/empleado', empleado.id, 'view' ]">{{empleado.id}}</a></td>
+                <td jhiTranslate="{{'healthSecurityWebApp.TipoDocumentoEnum.' + empleado.tipo_documento}}">{{empleado.tipo_documento}}</td>
+                <td>{{empleado.documento}}</td>
+                <td>{{empleado.primer_nombre}}</td>
+                <td>{{empleado.segundo_nombre}}</td>
+                <td>{{empleado.primer_apellido}}</td>
+                <td>{{empleado.segundo_apellido}}</td>
+                <td>{{empleado.direccion}}</td>
+                <td>{{empleado.telefono}}</td>
+                <td>{{empleado.nacimiento | date:'mediumDate'}}</td>
+                <td>
+                    {{empleado.user?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/empleado', empleado.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/empleado', empleado.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empleado/'+ empleado.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="empleados && empleados.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

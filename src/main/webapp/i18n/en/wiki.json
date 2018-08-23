@@ -1,0 +1,26 @@
+
+{
+    "healthSecurityWebApp": {
+        "wiki" : {
+            "home": {
+                "title": "Wikis",
+                "createLabel": "Create a new Wiki",
+                "createOrEditLabel": "Create or edit a Wiki"
+            },
+            "created": "A new Wiki is created with identifier {{ param }}",
+            "updated": "A Wiki is updated with identifier {{ param }}",
+            "deleted": "A Wiki is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Wiki {{ id }}?"
+            },
+            "detail": {
+                "title": "Wiki"
+            },
+            "titulo": "Titulo",
+            "imagen": "Imagen",
+            "descripcion": "Descripcion",
+            "tema": "Tema",
+            "categoria": "Categoria"
+        }
+    }
+}

@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reporte">
+            <h2><span jhiTranslate="healthSecurityWebApp.reporte.detail.title">Reporte</span> {{reporte.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.valoracion">Valoracion</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'healthSecurityWebApp.ValoracionEnum.' + reporte.valoracion}}">{{reporte.valoracion}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{reporte.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{reporte.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.accinones_realizadas">Accinones Realizadas</span></dt>
+                <dd>
+                    <span>{{reporte.accinones_realizadas}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.evidencia">Evidencia</span></dt>
+                <dd>
+                    <div *ngIf="reporte.evidencia">
+                        <a (click)="openFile(reporte.evidenciaContentType, reporte.evidencia)">
+                            <img [src]="'data:' + reporte.evidenciaContentType + ';base64,' + reporte.evidencia" style="max-width: 100%;" alt="reporte image"/>
+                        </a>
+                        {{reporte.evidenciaContentType}}, {{byteSize(reporte.evidencia)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.lugar_evento">Lugar Evento</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'healthSecurityWebApp.LugarEventoEnum.' + reporte.lugar_evento}}">{{reporte.lugar_evento}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.tipo_evento">Tipo Evento</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'healthSecurityWebApp.TipoEventoEnum.' + reporte.tipo_evento}}">{{reporte.tipo_evento}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.bLabores">B Labores</span></dt>
+                <dd>
+                    <span>{{reporte.bLabores}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.reporte.bReportado">B Reportado</span></dt>
+                <dd>
+                    <span>{{reporte.bReportado}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reporte', reporte.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

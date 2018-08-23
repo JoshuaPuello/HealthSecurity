@@ -1,0 +1,31 @@
+
+{
+    "healthSecurityWebApp": {
+        "empleado" : {
+            "home": {
+                "title": "Empleados",
+                "createLabel": "Crear nuevo Empleado",
+                "createOrEditLabel": "Crear o editar Empleado"
+            },
+            "created": "Un nuevo Empleado ha sido creado con el identificador {{ param }}",
+            "updated": "Un Empleado ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Empleado ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Empleado {{ id }}?"
+            },
+            "detail": {
+                "title": "Empleado"
+            },
+            "tipo_documento": "Tipo Documento",
+            "documento": "Documento",
+            "primer_nombre": "Primer Nombre",
+            "segundo_nombre": "Segundo Nombre",
+            "primer_apellido": "Primer Apellido",
+            "segundo_apellido": "Segundo Apellido",
+            "direccion": "Direccion",
+            "telefono": "Telefono",
+            "nacimiento": "Nacimiento",
+            "user": "User"
+        }
+    }
+}

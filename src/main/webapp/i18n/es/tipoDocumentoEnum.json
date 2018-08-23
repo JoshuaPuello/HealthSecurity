@@ -1,0 +1,10 @@
+{
+    "healthSecurityWebApp": {
+        "TipoDocumentoEnum" : {
+            "null": "",
+            "CEDULA_CIUDADANIA": "CEDULA_CIUDADANIA",
+            "CEDULA_EXTRANJERIA": "CEDULA_EXTRANJERIA",
+            "TARJETA_IDENTIDAD": "TARJETA_IDENTIDAD"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "healthSecurityWebApp": {
+        "TipoEventoEnum" : {
+            "null": "",
+            "ACCIDENTE": "ACCIDENTE",
+            "INCIDENTE": "INCIDENTE"
+        }
+    }
+}

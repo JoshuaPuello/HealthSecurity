@@ -32,7 +32,7 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/HealthSecurityWeb?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/HealthSecurityBD?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
         password:
         hikari:
@@ -80,7 +80,7 @@ spring:
 #        key-alias: healthsecurityweb
 # ===================================================================
 server:
-    port: 8080
+    port: 8888
 
 # ===================================================================
 # JHipster specific properties

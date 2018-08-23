@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="healthSecurityWebApp.reporte.home.title">Reportes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reporte" [routerLink]="['/reporte/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="healthSecurityWebApp.reporte.home.createLabel">
+            Create new Reporte
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="reportes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="valoracion"><span jhiTranslate="healthSecurityWebApp.reporte.valoracion">Valoracion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nombre"><span jhiTranslate="healthSecurityWebApp.reporte.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descripcion"><span jhiTranslate="healthSecurityWebApp.reporte.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="accinones_realizadas"><span jhiTranslate="healthSecurityWebApp.reporte.accinones_realizadas">Accinones Realizadas</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="evidencia"><span jhiTranslate="healthSecurityWebApp.reporte.evidencia">Evidencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lugar_evento"><span jhiTranslate="healthSecurityWebApp.reporte.lugar_evento">Lugar Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tipo_evento"><span jhiTranslate="healthSecurityWebApp.reporte.tipo_evento">Tipo Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="bLabores"><span jhiTranslate="healthSecurityWebApp.reporte.bLabores">B Labores</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="bReportado"><span jhiTranslate="healthSecurityWebApp.reporte.bReportado">B Reportado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reporte of reportes ;trackBy: trackId">
+                <td><a [routerLink]="['/reporte', reporte.id, 'view' ]">{{reporte.id}}</a></td>
+                <td jhiTranslate="{{'healthSecurityWebApp.ValoracionEnum.' + reporte.valoracion}}">{{reporte.valoracion}}</td>
+                <td>{{reporte.nombre}}</td>
+                <td>{{reporte.descripcion}}</td>
+                <td>{{reporte.accinones_realizadas}}</td>
+                <td>
+                    <a *ngIf="reporte.evidencia" (click)="openFile(reporte.evidenciaContentType, reporte.evidencia)">
+                        <img [src]="'data:' + reporte.evidenciaContentType + ';base64,' + reporte.evidencia" style="max-height: 30px;" alt="reporte image"/>
+                    </a>
+                    <span *ngIf="reporte.evidencia">{{reporte.evidenciaContentType}}, {{byteSize(reporte.evidencia)}}</span>
+                </td>
+                <td jhiTranslate="{{'healthSecurityWebApp.LugarEventoEnum.' + reporte.lugar_evento}}">{{reporte.lugar_evento}}</td>
+                <td jhiTranslate="{{'healthSecurityWebApp.TipoEventoEnum.' + reporte.tipo_evento}}">{{reporte.tipo_evento}}</td>
+                <td>{{reporte.bLabores}}</td>
+                <td>{{reporte.bReportado}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/reporte', reporte.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/reporte', reporte.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'reporte/'+ reporte.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="reportes && reportes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

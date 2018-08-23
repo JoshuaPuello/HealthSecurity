@@ -1,0 +1,69 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "reporte",
+            "otherEntityName": "reporte",
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "respuesta"
+        },
+        {
+            "relationshipName": "areaRiesgo",
+            "otherEntityName": "areaRiesgo",
+            "relationshipType": "many-to-many",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "respuesta"
+        },
+        {
+            "relationshipName": "tipoRiesgo",
+            "otherEntityName": "tipoRiesgo",
+            "relationshipType": "many-to-many",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "respuesta"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "valoracion",
+            "fieldType": "ValoracionEnum",
+            "fieldValues": "LEVE,MODERADO,CRITICO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "EstadoEnum",
+            "fieldValues": "PENDIENTE,ACEPTADO,RECHAZADO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180823073951",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "respuesta",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-empleado-heading" jhiTranslate="healthSecurityWebApp.empleado.home.createOrEditLabel">Create or edit a Empleado</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!empleado.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="empleado.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.tipo_documento" for="field_tipo_documento">Tipo Documento</label>
+                    <select class="form-control" name="tipo_documento" [(ngModel)]="empleado.tipo_documento" id="field_tipo_documento"  required>
+                        <option value="CEDULA_CIUDADANIA">{{'healthSecurityWebApp.TipoDocumentoEnum.CEDULA_CIUDADANIA' | translate}}</option>
+                        <option value="CEDULA_EXTRANJERIA">{{'healthSecurityWebApp.TipoDocumentoEnum.CEDULA_EXTRANJERIA' | translate}}</option>
+                        <option value="TARJETA_IDENTIDAD">{{'healthSecurityWebApp.TipoDocumentoEnum.TARJETA_IDENTIDAD' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.tipo_documento?.dirty && editForm.controls.tipo_documento?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tipo_documento?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.documento" for="field_documento">Documento</label>
+                    <input type="text" class="form-control" name="documento" id="field_documento"
+                        [(ngModel)]="empleado.documento" required/>
+                    <div [hidden]="!(editForm.controls.documento?.dirty && editForm.controls.documento?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.documento?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.primer_nombre" for="field_primer_nombre">Primer Nombre</label>
+                    <input type="text" class="form-control" name="primer_nombre" id="field_primer_nombre"
+                        [(ngModel)]="empleado.primer_nombre" required/>
+                    <div [hidden]="!(editForm.controls.primer_nombre?.dirty && editForm.controls.primer_nombre?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.primer_nombre?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.segundo_nombre" for="field_segundo_nombre">Segundo Nombre</label>
+                    <input type="text" class="form-control" name="segundo_nombre" id="field_segundo_nombre"
+                        [(ngModel)]="empleado.segundo_nombre" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.primer_apellido" for="field_primer_apellido">Primer Apellido</label>
+                    <input type="text" class="form-control" name="primer_apellido" id="field_primer_apellido"
+                        [(ngModel)]="empleado.primer_apellido" required/>
+                    <div [hidden]="!(editForm.controls.primer_apellido?.dirty && editForm.controls.primer_apellido?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.primer_apellido?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.segundo_apellido" for="field_segundo_apellido">Segundo Apellido</label>
+                    <input type="text" class="form-control" name="segundo_apellido" id="field_segundo_apellido"
+                        [(ngModel)]="empleado.segundo_apellido" required/>
+                    <div [hidden]="!(editForm.controls.segundo_apellido?.dirty && editForm.controls.segundo_apellido?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.segundo_apellido?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.direccion" for="field_direccion">Direccion</label>
+                    <input type="text" class="form-control" name="direccion" id="field_direccion"
+                        [(ngModel)]="empleado.direccion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.telefono" for="field_telefono">Telefono</label>
+                    <input type="text" class="form-control" name="telefono" id="field_telefono"
+                        [(ngModel)]="empleado.telefono" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.nacimiento" for="field_nacimiento">Nacimiento</label>
+                    <div class="input-group">
+                        <input id="field_nacimiento" type="text" class="form-control" name="nacimiento" ngbDatepicker  #nacimientoDp="ngbDatepicker" [(ngModel)]="empleado.nacimiento"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="nacimientoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.empleado.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="empleado.user"  required>
+                        <option *ngIf="!editForm.value.user" [ngValue]="null" selected></option>
+                        <option [ngValue]="userOption.id === empleado.user?.id ? empleado.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.user?.dirty && editForm.controls.user?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.user?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

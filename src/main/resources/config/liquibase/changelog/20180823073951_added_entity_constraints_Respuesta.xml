@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Respuesta.
+    -->
+    <changeSet id="20180823073951-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="reporte_id"
+                                 baseTableName="respuesta"
+                                 constraintName="fk_respuesta_reporte_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reporte"/>
+
+        <addForeignKeyConstraint baseColumnNames="respuestas_id"
+                                 baseTableName="respuesta_area_riesgo"
+                                 constraintName="fk_respuesta_area_riesgo_respuestas_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="respuesta"/>
+        <addForeignKeyConstraint baseColumnNames="area_riesgos_id"
+                                 baseTableName="respuesta_area_riesgo"
+                                 constraintName="fk_respuesta_area_riesgo_area_riesgos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="area_riesgo"/>
+        
+        <addForeignKeyConstraint baseColumnNames="respuestas_id"
+                                 baseTableName="respuesta_tipo_riesgo"
+                                 constraintName="fk_respuesta_tipo_riesgo_respuestas_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="respuesta"/>
+        <addForeignKeyConstraint baseColumnNames="tipo_riesgos_id"
+                                 baseTableName="respuesta_tipo_riesgo"
+                                 constraintName="fk_respuesta_tipo_riesgo_tipo_riesgos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_riesgo"/>
+        
+    </changeSet>
+</databaseChangeLog>

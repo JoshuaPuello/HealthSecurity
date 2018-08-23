@@ -1,0 +1,10 @@
+{
+    "healthSecurityWebApp": {
+        "EstadoEnum" : {
+            "null": "",
+            "PENDIENTE": "PENDIENTE",
+            "ACEPTADO": "ACEPTADO",
+            "RECHAZADO": "RECHAZADO"
+        }
+    }
+}

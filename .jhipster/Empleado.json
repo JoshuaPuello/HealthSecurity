@@ -1,0 +1,78 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "empleado"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "tipo_documento",
+            "fieldType": "TipoDocumentoEnum",
+            "fieldValues": "CEDULA_CIUDADANIA,CEDULA_EXTRANJERIA,TARJETA_IDENTIDAD",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "documento",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "primer_nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "segundo_nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "primer_apellido",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "segundo_apellido",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nacimiento",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180823062246",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "empleado",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

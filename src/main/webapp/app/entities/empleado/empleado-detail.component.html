@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="empleado">
+            <h2><span jhiTranslate="healthSecurityWebApp.empleado.detail.title">Empleado</span> {{empleado.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.tipo_documento">Tipo Documento</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'healthSecurityWebApp.TipoDocumentoEnum.' + empleado.tipo_documento}}">{{empleado.tipo_documento}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.documento">Documento</span></dt>
+                <dd>
+                    <span>{{empleado.documento}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.primer_nombre">Primer Nombre</span></dt>
+                <dd>
+                    <span>{{empleado.primer_nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.segundo_nombre">Segundo Nombre</span></dt>
+                <dd>
+                    <span>{{empleado.segundo_nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.primer_apellido">Primer Apellido</span></dt>
+                <dd>
+                    <span>{{empleado.primer_apellido}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.segundo_apellido">Segundo Apellido</span></dt>
+                <dd>
+                    <span>{{empleado.segundo_apellido}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.direccion">Direccion</span></dt>
+                <dd>
+                    <span>{{empleado.direccion}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.telefono">Telefono</span></dt>
+                <dd>
+                    <span>{{empleado.telefono}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.nacimiento">Nacimiento</span></dt>
+                <dd>
+                    <span>{{empleado.nacimiento}}</span>
+                </dd>
+                <dt><span jhiTranslate="healthSecurityWebApp.empleado.user">User</span></dt>
+                <dd>
+                    {{empleado.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/empleado', empleado.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
