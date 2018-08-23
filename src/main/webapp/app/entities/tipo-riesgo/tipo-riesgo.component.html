@@ -14,15 +14,13 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombre"><span jhiTranslate="healthSecurityWebApp.tipoRiesgo.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="descripcion"><span jhiTranslate="healthSecurityWebApp.tipoRiesgo.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let tipoRiesgo of tipoRiesgos ;trackBy: trackId">
-                <td><a [routerLink]="['/tipo-riesgo', tipoRiesgo.id, 'view' ]">{{tipoRiesgo.id}}</a></td>
                 <td>{{tipoRiesgo.nombre}}</td>
                 <td>{{tipoRiesgo.descripcion}}</td>
                 <td class="text-right">

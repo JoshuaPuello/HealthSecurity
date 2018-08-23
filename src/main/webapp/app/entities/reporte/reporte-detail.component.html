@@ -27,7 +27,6 @@
                         <a (click)="openFile(reporte.evidenciaContentType, reporte.evidencia)">
                             <img [src]="'data:' + reporte.evidenciaContentType + ';base64,' + reporte.evidencia" style="max-width: 100%;" alt="reporte image"/>
                         </a>
-                        {{reporte.evidenciaContentType}}, {{byteSize(reporte.evidencia)}}
                     </div>
                 </dd>
                 <dt><span jhiTranslate="healthSecurityWebApp.reporte.lugar_evento">Lugar Evento</span></dt>
@@ -38,11 +37,11 @@
                 <dd>
                     <span jhiTranslate="{{'healthSecurityWebApp.TipoEventoEnum.' + reporte.tipo_evento}}">{{reporte.tipo_evento}}</span>
                 </dd>
-                <dt><span jhiTranslate="healthSecurityWebApp.reporte.bLabores">B Labores</span></dt>
+                <dt><span >¿Se encontraba realizando sus labores habituales?</span></dt>
                 <dd>
                     <span>{{reporte.bLabores}}</span>
                 </dd>
-                <dt><span jhiTranslate="healthSecurityWebApp.reporte.bReportado">B Reportado</span></dt>
+                <dt><span >¿Le reportó el caso a su jefe inmediato?</span></dt>
                 <dd>
                     <span>{{reporte.bReportado}}</span>
                 </dd>

@@ -14,17 +14,15 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="valoracion"><span jhiTranslate="healthSecurityWebApp.respuesta.valoracion">Valoracion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="descripcion"><span jhiTranslate="healthSecurityWebApp.respuesta.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="estado"><span jhiTranslate="healthSecurityWebApp.respuesta.estado">Estado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="reporte.id"><span jhiTranslate="healthSecurityWebApp.respuesta.reporte">Reporte</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th>Valoracion</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>Reporte</th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let respuesta of respuestas ;trackBy: trackId">
-                <td><a [routerLink]="['/respuesta', respuesta.id, 'view' ]">{{respuesta.id}}</a></td>
                 <td jhiTranslate="{{'healthSecurityWebApp.ValoracionEnum.' + respuesta.valoracion}}">{{respuesta.valoracion}}</td>
                 <td>{{respuesta.descripcion}}</td>
                 <td jhiTranslate="{{'healthSecurityWebApp.EstadoEnum.' + respuesta.estado}}">{{respuesta.estado}}</td>

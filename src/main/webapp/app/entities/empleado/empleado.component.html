@@ -14,29 +14,22 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tipo_documento"><span jhiTranslate="healthSecurityWebApp.empleado.tipo_documento">Tipo Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="documento"><span jhiTranslate="healthSecurityWebApp.empleado.documento">Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="primer_nombre"><span jhiTranslate="healthSecurityWebApp.empleado.primer_nombre">Primer Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="segundo_nombre"><span jhiTranslate="healthSecurityWebApp.empleado.segundo_nombre">Segundo Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="primer_apellido"><span jhiTranslate="healthSecurityWebApp.empleado.primer_apellido">Primer Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="segundo_apellido"><span jhiTranslate="healthSecurityWebApp.empleado.segundo_apellido">Segundo Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="direccion"><span jhiTranslate="healthSecurityWebApp.empleado.direccion">Direccion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="telefono"><span jhiTranslate="healthSecurityWebApp.empleado.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nacimiento"><span jhiTranslate="healthSecurityWebApp.empleado.nacimiento">Nacimiento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="user.login"><span jhiTranslate="healthSecurityWebApp.empleado.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!-- <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
+            <th>Tipo Documento</th>
+            <th>Documento</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Nacimiento</th>
+            <th>Usuario</th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let empleado of empleados ;trackBy: trackId">
-                <td><a [routerLink]="['/empleado', empleado.id, 'view' ]">{{empleado.id}}</a></td>
                 <td jhiTranslate="{{'healthSecurityWebApp.TipoDocumentoEnum.' + empleado.tipo_documento}}">{{empleado.tipo_documento}}</td>
                 <td>{{empleado.documento}}</td>
-                <td>{{empleado.primer_nombre}}</td>
-                <td>{{empleado.segundo_nombre}}</td>
-                <td>{{empleado.primer_apellido}}</td>
-                <td>{{empleado.segundo_apellido}}</td>
+                <td>{{empleado.primer_nombre}} {{empleado.segundo_nombre}} {{empleado.primer_apellido}} {{empleado.segundo_apellido}}</td>
                 <td>{{empleado.direccion}}</td>
                 <td>{{empleado.telefono}}</td>
                 <td>{{empleado.nacimiento | date:'mediumDate'}}</td>

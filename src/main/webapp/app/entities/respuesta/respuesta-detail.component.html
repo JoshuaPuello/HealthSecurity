@@ -20,7 +20,7 @@
                 <dt><span jhiTranslate="healthSecurityWebApp.respuesta.reporte">Reporte</span></dt>
                 <dd>
                     <div *ngIf="respuesta.reporte">
-                        <a [routerLink]="['/reporte', respuesta.reporte?.id, 'view']">{{respuesta.reporte?.id}}</a>
+                        <a [routerLink]="['/reporte', respuesta.reporte?.id, 'view']">{{respuesta.reporte?.nombre}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="healthSecurityWebApp.respuesta.areaRiesgo">Area Riesgo</span></dt>

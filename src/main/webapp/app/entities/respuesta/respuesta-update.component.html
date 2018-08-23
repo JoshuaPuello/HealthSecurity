@@ -47,7 +47,7 @@
                     <label class="form-control-label" jhiTranslate="healthSecurityWebApp.respuesta.reporte" for="field_reporte">Reporte</label>
                     <select class="form-control" id="field_reporte" name="reporte" [(ngModel)]="respuesta.reporte" required>
                         <option *ngIf="!editForm.value.reporte" [ngValue]="null" selected></option>
-                        <option [ngValue]="reporteOption.id === respuesta.reporte?.id ? respuesta.reporte : reporteOption" *ngFor="let reporteOption of reportes; trackBy: trackReporteById">{{reporteOption.id}}</option>
+                        <option [ngValue]="reporteOption.id === respuesta.reporte?.id ? respuesta.reporte : reporteOption" *ngFor="let reporteOption of reportes; trackBy: trackReporteById">{{reporteOption.nombre}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.reporte?.dirty && editForm.controls.reporte?.invalid)">
@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label jhiTranslate="healthSecurityWebApp.respuesta.areaRiesgo" for="field_areaRiesgo">Area Riesgo</label>
                     <select class="form-control" id="field_areaRiesgo" multiple name="areaRiesgo" [(ngModel)]="respuesta.areaRiesgos" required>
-                        <option [ngValue]="getSelected(respuesta.areaRiesgos, areaRiesgoOption)" *ngFor="let areaRiesgoOption of areariesgos; trackBy: trackAreaRiesgoById">{{areaRiesgoOption.id}}</option>
+                        <option [ngValue]="getSelected(respuesta.areaRiesgos, areaRiesgoOption)" *ngFor="let areaRiesgoOption of areariesgos; trackBy: trackAreaRiesgoById">{{areaRiesgoOption.nombre}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.areaRiesgo?.dirty && editForm.controls.areaRiesgo?.invalid)">
@@ -71,7 +71,7 @@
                 <div class="form-group">
                     <label jhiTranslate="healthSecurityWebApp.respuesta.tipoRiesgo" for="field_tipoRiesgo">Tipo Riesgo</label>
                     <select class="form-control" id="field_tipoRiesgo" multiple name="tipoRiesgo" [(ngModel)]="respuesta.tipoRiesgos" required>
-                        <option [ngValue]="getSelected(respuesta.tipoRiesgos, tipoRiesgoOption)" *ngFor="let tipoRiesgoOption of tiporiesgos; trackBy: trackTipoRiesgoById">{{tipoRiesgoOption.id}}</option>
+                        <option [ngValue]="getSelected(respuesta.tipoRiesgos, tipoRiesgoOption)" *ngFor="let tipoRiesgoOption of tiporiesgos; trackBy: trackTipoRiesgoById">{{tipoRiesgoOption.nombre}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.tipoRiesgo?.dirty && editForm.controls.tipoRiesgo?.invalid)">

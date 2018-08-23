@@ -49,7 +49,6 @@
                     <div>
                         <img [src]="'data:' + reporte.evidenciaContentType + ';base64,' + reporte.evidencia" style="max-height: 100px;" *ngIf="reporte.evidencia" alt="reporte image"/>
                         <div *ngIf="reporte.evidencia" class="form-text text-danger clearfix">
-                            <span class="pull-left">{{reporte.evidenciaContentType}}, {{byteSize(reporte.evidencia)}}</span>
                             <button type="button" (click)="clearInputImage('evidencia', 'evidenciaContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
                                 <fa-icon [icon]="'times'"></fa-icon>
                             </button>
@@ -88,7 +87,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.bLabores" for="field_bLabores">B Labores</label>
+                    <label class="form-control-label" for="field_bLabores">¿Se encontraba realizando sus labores habituales?</label>
                     <input type="checkbox" class="form-control" name="bLabores" id="field_bLabores"
                         [(ngModel)]="reporte.bLabores" />
                     <div [hidden]="!(editForm.controls.bLabores?.dirty && editForm.controls.bLabores?.invalid)">
@@ -99,7 +98,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.bReportado" for="field_bReportado">B Reportado</label>
+                    <label class="form-control-label" for="field_bReportado">¿Le reportó el caso a su jefe inmediato?</label>
                     <input type="checkbox" class="form-control" name="bReportado" id="field_bReportado"
                         [(ngModel)]="reporte.bReportado" />
                     <div [hidden]="!(editForm.controls.bReportado?.dirty && editForm.controls.bReportado?.invalid)">

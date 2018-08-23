@@ -14,22 +14,20 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="valoracion"><span jhiTranslate="healthSecurityWebApp.reporte.valoracion">Valoracion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombre"><span jhiTranslate="healthSecurityWebApp.reporte.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="descripcion"><span jhiTranslate="healthSecurityWebApp.reporte.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="accinones_realizadas"><span jhiTranslate="healthSecurityWebApp.reporte.accinones_realizadas">Accinones Realizadas</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="evidencia"><span jhiTranslate="healthSecurityWebApp.reporte.evidencia">Evidencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="lugar_evento"><span jhiTranslate="healthSecurityWebApp.reporte.lugar_evento">Lugar Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tipo_evento"><span jhiTranslate="healthSecurityWebApp.reporte.tipo_evento">Tipo Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="bLabores"><span jhiTranslate="healthSecurityWebApp.reporte.bLabores">B Labores</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="bReportado"><span jhiTranslate="healthSecurityWebApp.reporte.bReportado">B Reportado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th>Valoracion</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Acciones Realizadas</th>
+            <th>Evidencia</th>
+            <th>Lugar Evento</th>
+            <th>Tipo Evento</th>
+            <th>Labores Hab.</th>
+            <th>Reportado</th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let reporte of reportes ;trackBy: trackId">
-                <td><a [routerLink]="['/reporte', reporte.id, 'view' ]">{{reporte.id}}</a></td>
                 <td jhiTranslate="{{'healthSecurityWebApp.ValoracionEnum.' + reporte.valoracion}}">{{reporte.valoracion}}</td>
                 <td>{{reporte.nombre}}</td>
                 <td>{{reporte.descripcion}}</td>
@@ -38,7 +36,6 @@
                     <a *ngIf="reporte.evidencia" (click)="openFile(reporte.evidenciaContentType, reporte.evidencia)">
                         <img [src]="'data:' + reporte.evidenciaContentType + ';base64,' + reporte.evidencia" style="max-height: 30px;" alt="reporte image"/>
                     </a>
-                    <span *ngIf="reporte.evidencia">{{reporte.evidenciaContentType}}, {{byteSize(reporte.evidencia)}}</span>
                 </td>
                 <td jhiTranslate="{{'healthSecurityWebApp.LugarEventoEnum.' + reporte.lugar_evento}}">{{reporte.lugar_evento}}</td>
                 <td jhiTranslate="{{'healthSecurityWebApp.TipoEventoEnum.' + reporte.tipo_evento}}">{{reporte.tipo_evento}}</td>

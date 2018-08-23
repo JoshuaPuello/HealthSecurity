@@ -14,18 +14,16 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="titulo"><span jhiTranslate="healthSecurityWebApp.wiki.titulo">Titulo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="imagen"><span jhiTranslate="healthSecurityWebApp.wiki.imagen">Imagen</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="descripcion"><span jhiTranslate="healthSecurityWebApp.wiki.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tema.id"><span jhiTranslate="healthSecurityWebApp.wiki.tema">Tema</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="categoria.id"><span jhiTranslate="healthSecurityWebApp.wiki.categoria">Categoria</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th>Titulo</th>
+            <th>Imagen</th>
+            <th>Descripcion</th>
+            <th>Tema</th>
+            <th>Categoria</th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let wiki of wikis ;trackBy: trackId">
-                <td><a [routerLink]="['/wiki', wiki.id, 'view' ]">{{wiki.id}}</a></td>
                 <td>{{wiki.titulo}}</td>
                 <td>
                     <a *ngIf="wiki.imagen" (click)="openFile(wiki.imagenContentType, wiki.imagen)">
