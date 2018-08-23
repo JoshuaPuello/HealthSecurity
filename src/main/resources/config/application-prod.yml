@@ -48,10 +48,15 @@ spring:
     liquibase:
         contexts: prod
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: mail.hsplatform.com.co
+        port: 587
+        username: joshuapuello@hsplatform.com.co
+        password: lafamiliapp
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
     thymeleaf:
         cache: true
 

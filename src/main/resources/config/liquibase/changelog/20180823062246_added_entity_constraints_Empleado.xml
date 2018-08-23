@@ -12,7 +12,7 @@
                                  baseTableName="empleado"
                                  constraintName="fk_empleado_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="jhi_user"/>
+                                 referencedTableName="user_credentials"/>
 
     </changeSet>
 </databaseChangeLog>
