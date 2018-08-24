@@ -33,6 +33,15 @@
     "languages": [
       "es",
       "en"
-    ]
+    ],
+    "aws": {
+      "applicationName": "health-security-application",
+      "environmentName": "health-security-application-env",
+      "bucketName": "health-security-application",
+      "instanceType": "t2.small",
+      "awsRegion": "us-east-1",
+      "dbName": "HealthSecurityWeb",
+      "dbInstanceClass": "db.t2.small"
+    }
   }
 }
