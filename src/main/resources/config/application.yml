@@ -86,7 +86,7 @@ jhipster:
         allow-credentials: true
         max-age: 1800
     mail:
-        from: joshuapuello@hsplatform.com.co
+        from: support@hsplatform.com.co
     swagger:
         default-include-pattern: /api/.*
         title: HealthSecurityWeb API
