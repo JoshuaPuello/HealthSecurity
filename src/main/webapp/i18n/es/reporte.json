@@ -25,7 +25,8 @@
             "tipo_evento": "Tipo Evento",
             "bLabores": "B Labores",
             "bReportado": "B Reportado",
-            "respuesta": "Respuesta"
+            "respuesta": "Respuesta",
+            "user": "User"
         }
     }
 }

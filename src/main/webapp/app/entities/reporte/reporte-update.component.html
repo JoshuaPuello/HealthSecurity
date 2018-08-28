@@ -40,7 +40,7 @@
                         [(ngModel)]="reporte.descripcion" ></textarea>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="healthSecurityWebApp.reporte.accinones_realizadas" for="field_accinones_realizadas">Accinones Realizadas</label>
+                    <label class="form-control-label"for="field_accinones_realizadas">Acciones Realizadas</label>
                     <textarea class="form-control" name="accinones_realizadas" id="field_accinones_realizadas"
                         [(ngModel)]="reporte.accinones_realizadas" ></textarea>
                 </div>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_bReportado">¿Le reportó el caso a su jefe inmediato?</label>
+                    <label class="form-control-label" for="field_bReportado">¿Reportó el caso con su jefe inmediato?</label>
                     <input type="checkbox" class="form-control" name="bReportado" id="field_bReportado"
                         [(ngModel)]="reporte.bReportado" />
                     <div [hidden]="!(editForm.controls.bReportado?.dirty && editForm.controls.bReportado?.invalid)">
@@ -109,6 +109,13 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_user">Usuario</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="reporte.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === reporte.user?.id ? reporte.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

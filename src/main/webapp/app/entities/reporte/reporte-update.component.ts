@@ -8,6 +8,7 @@ import { IReporte } from 'app/shared/model/reporte.model';
 import { ReporteService } from './reporte.service';
 import { IRespuesta } from 'app/shared/model/respuesta.model';
 import { RespuestaService } from 'app/entities/respuesta';
+import { IUser, UserService } from 'app/core';
 
 @Component({
     selector: 'jhi-reporte-update',
@@ -19,11 +20,14 @@ export class ReporteUpdateComponent implements OnInit {
 
     respuestas: IRespuesta[];
 
+    users: IUser[];
+
     constructor(
         private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
         private reporteService: ReporteService,
         private respuestaService: RespuestaService,
+        private userService: UserService,
         private elementRef: ElementRef,
         private activatedRoute: ActivatedRoute
     ) {}
@@ -36,6 +40,12 @@ export class ReporteUpdateComponent implements OnInit {
         this.respuestaService.query().subscribe(
             (res: HttpResponse<IRespuesta[]>) => {
                 this.respuestas = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.userService.query().subscribe(
+            (res: HttpResponse<IUser[]>) => {
+                this.users = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -88,6 +98,10 @@ export class ReporteUpdateComponent implements OnInit {
     }
 
     trackRespuestaById(index: number, item: IRespuesta) {
+        return item.id;
+    }
+
+    trackUserById(index: number, item: IUser) {
         return item.id;
     }
     get reporte() {

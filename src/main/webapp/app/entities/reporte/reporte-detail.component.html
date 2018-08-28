@@ -17,7 +17,7 @@
                 <dd>
                     <span>{{reporte.descripcion}}</span>
                 </dd>
-                <dt><span jhiTranslate="healthSecurityWebApp.reporte.accinones_realizadas">Accinones Realizadas</span></dt>
+                <dt><span>Acciones Realizadas</span></dt>
                 <dd>
                     <span>{{reporte.accinones_realizadas}}</span>
                 </dd>
@@ -39,11 +39,15 @@
                 </dd>
                 <dt><span >¿Se encontraba realizando sus labores habituales?</span></dt>
                 <dd>
-                    <span>{{reporte.bLabores}}</span>
+                    <span>{{reporte.bLabores == true ? 'SI' : 'NO'}}</span>
                 </dd>
-                <dt><span >¿Le reportó el caso a su jefe inmediato?</span></dt>
+                <dt><span >¿Reportó el caso con su jefe inmediato?</span></dt>
                 <dd>
-                    <span>{{reporte.bReportado}}</span>
+                    <span>{{reporte.bReportado == true ? 'SI' : 'NO'}}</span>
+                </dd>
+                <dt><span>Usuario</span></dt>
+                <dd>
+                    {{reporte.user?.login}}
                 </dd>
             </dl>
 

@@ -1,4 +1,5 @@
-import { IRespuesta } from 'app/shared/model/respuesta.model';
+import { IRespuesta } from 'app/shared/model//respuesta.model';
+import { IUser } from 'app/core/user/user.model';
 
 export const enum ValoracionEnum {
     LEVE = 'LEVE',
@@ -29,6 +30,7 @@ export interface IReporte {
     bLabores?: boolean;
     bReportado?: boolean;
     respuesta?: IRespuesta;
+    user?: IUser;
 }
 
 export class Reporte implements IReporte {
@@ -44,7 +46,8 @@ export class Reporte implements IReporte {
         public tipo_evento?: TipoEventoEnum,
         public bLabores?: boolean,
         public bReportado?: boolean,
-        public respuesta?: IRespuesta
+        public respuesta?: IRespuesta,
+        public user?: IUser
     ) {
         this.bLabores = false;
         this.bReportado = false;

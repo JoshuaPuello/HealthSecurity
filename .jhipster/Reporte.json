@@ -8,6 +8,14 @@
             "relationshipType": "one-to-one",
             "ownerSide": false,
             "otherEntityRelationshipName": "reporte"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "reporte"
         }
     ],
     "fields": [

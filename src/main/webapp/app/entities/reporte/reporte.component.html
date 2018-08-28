@@ -17,12 +17,11 @@
             <th>Valoracion</th>
             <th>Nombre</th>
             <th>Descripcion</th>
-            <th>Acciones Realizadas</th>
+            <th>Acciones</th>
             <th>Evidencia</th>
             <th>Lugar Evento</th>
-            <th>Tipo Evento</th>
-            <th>Labores Hab.</th>
-            <th>Reportado</th>
+            <th>Tipo Evevento</th>
+            <th>Usuario</th>
             <th></th>
             </tr>
             </thead>
@@ -39,8 +38,11 @@
                 </td>
                 <td jhiTranslate="{{'healthSecurityWebApp.LugarEventoEnum.' + reporte.lugar_evento}}">{{reporte.lugar_evento}}</td>
                 <td jhiTranslate="{{'healthSecurityWebApp.TipoEventoEnum.' + reporte.tipo_evento}}">{{reporte.tipo_evento}}</td>
-                <td>{{reporte.bLabores}}</td>
-                <td>{{reporte.bReportado}}</td>
+                <!-- <td>{{reporte.bLabores == true ? 'SI' : 'NO'}}</td>
+                <td>{{reporte.bReportado == true ? 'SI' : 'NO'}}</td> -->
+                <td>
+                    {{reporte.user?.login}}
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
