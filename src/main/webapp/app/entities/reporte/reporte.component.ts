@@ -62,6 +62,10 @@ export class ReporteComponent implements OnInit, OnDestroy {
             );
     }
 
+    generatePDF() {
+        this.reporteService.generatePDF().subscribe();
+    }
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;

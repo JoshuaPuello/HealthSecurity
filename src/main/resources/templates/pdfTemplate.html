@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
+
+<style>
+	.logo {
+		text-align:center;
+		float:none;
+		padding:0;
+		margin:0
+	}
+
+	.tabla-pie {
+		font-size: 11px; 
+		color: #f1f1f1; 
+		color: #999;
+		font-family: Arial; 
+		font-weight: normal;	
+		width: 100%;
+	}
+
+	#footer {
+			position: running(footer);
+			text-align: center;
+	}
+
+	.title-fr {
+		background-color:#848484;
+		color:white;
+	}
+
+	body {
+		font-family:'Raleway';
+		font-size:14px;
+	}
+
+</style>
+
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous"></link>
+</head>
+<body style="font-size: 0.8rem;">
+
+	<div style="width: 690px;">
+
+		<h2
+			style="background-color: blue; color: white; font-weight: bold; width: 100%;">
+			<p align="center">GENERACIÓN REPORTE GENERAL</p>
+		</h2>
+
+		<p align="center"><h1 style="font-family:'Raleway'; font-weight: bold; color: red;">DISMEL LTDA</h1></p>
+
+		<p align="center">Fecha de generación
+			<p th:text="${fecha}"></p>
+		</p> 
+		
+		<br></br>
+
+		<table width="100%" border="1" class="tabla-detalle">
+			<tr>
+				<th class="title-fr" colspan="4"><p align="center">REPORTES</p></th>
+			</tr>
+			<tr>
+				<th style="text-align: center;">Recibidos</th>
+				<th style="text-align: center;">Aprobados</th>
+				<th style="text-align: center;">Rechazados</th>
+				<th style="text-align: center;">Pendientes</th>
+			</tr>
+
+			<tr>
+				<td style="text-align: center;"><p th:text="${recibidos}"></p></td>
+				<td style="text-align: center;"><p th:text="${aprobados}"></p></td>
+				<td style="text-align: center;"><p th:text="${rechazados}"></p></td>
+				<td style="text-align: center;"><p th:text="${pendientes}"></p></td>
+			</tr>
+		</table>
+
+		<br></br>
+
+		<table  width="100%" border="1" class="tabla-detalle">
+			<thead>
+				<tr>
+					<th  class="title-fr" style="text-align: center;" colspan="3">Incidentes</th>
+					<th  class="title-fr" style="text-align: center;" colspan="3">Accidentes</th>
+				</tr>
+				<tr>
+					<th style="text-align: center;"># RT</th>
+					<th style="text-align: center;"># Incidentes</th>
+					<th style="text-align: center;">%</th>
+					<th style="text-align: center;"># RT</th>
+					<th style="text-align: center;"># Accidentes</th>
+					<th style="text-align: center;">%</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;" scope="row"><p th:text="${recibidos}"></p></td>
+					<td style="text-align: center;"><p th:text="${incidentes}"></p></td>
+					<td style="text-align: center;"><p th:text="${porcentajeIncidentes}"></p></td>
+					<td style="text-align: center;"><p th:text="${recibidos}"></p></td>
+					<td style="text-align: center;"><p th:text="${accidentes}"></p></td>
+					<td style="text-align: center;"><p th:text="${porcentajeAccidentes}"></p></td>
+				</tr>
+				<tr>
+					<td colspan="6"></td>
+				</tr>
+				<tr>
+					<th  class="title-fr" style="text-align: center;" colspan="6">Valoración</th>
+				</tr>
+				<tr>
+					<td style="text-align: center;">LEVE</td>
+					<td style="text-align: center;">MODERADO</td>
+					<td style="text-align: center;">CRITICO</td>
+					<td style="text-align: center;">LEVE</td>
+					<td style="text-align: center;">MODERADO</td>
+					<td style="text-align: center;">CRITICO</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;" scope="row"><p th:text="${incidentesLeve}"></p></td>
+					<td style="text-align: center;"><p th:text="${incidentesModerado}"></p></td>
+					<td style="text-align: center;"><p th:text="${incidentesCritico}"></p></td>
+					<td style="text-align: center;"><p th:text="${accidentesLeve}"></p></td>
+					<td style="text-align: center;"><p th:text="${accidentesModerado}"></p></td>
+					<td style="text-align: center;"><p th:text="${accidentesCritico}"></p></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br></br>
+		
+		<p><em>#RT: Reportes totales</em></p>
+		
+	</div>
+
+</body>
+</html>

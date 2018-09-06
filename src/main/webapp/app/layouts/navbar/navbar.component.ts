@@ -1,8 +1,12 @@
+import { saveAs } from 'file-saver';
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
+import { ReporteService } from '../../entities/reporte/reporte.service';
 import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from 'app/core';
 import { ProfileService } from '../profiles/profile.service';
@@ -22,6 +26,7 @@ export class NavbarComponent implements OnInit {
 
     constructor(
         private loginService: LoginService,
+        private reporteService: ReporteService,
         private languageService: JhiLanguageService,
         private languageHelper: JhiLanguageHelper,
         private principal: Principal,
@@ -31,6 +36,14 @@ export class NavbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+    }
+
+    generatePDF() {
+        this.reporteService.generatePDF().subscribe(data => {
+            console.log(data);
+            let displayDate = new Date().toLocaleDateString();
+            saveAs(new Blob([data], { type: 'pdf' }), 'REPORTE_GENERAL_' + displayDate + '.pdf');
+        });
     }
 
     ngOnInit() {

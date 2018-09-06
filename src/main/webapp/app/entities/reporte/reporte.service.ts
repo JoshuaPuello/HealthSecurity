@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { IReporte } from 'app/shared/model/reporte.model';
+import { HttpHeaders } from '@angular/common/http';
 
 type EntityResponseType = HttpResponse<IReporte>;
 type EntityArrayResponseType = HttpResponse<IReporte[]>;
@@ -34,5 +35,11 @@ export class ReporteService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    generatePDF(): Observable<HttpResponse<any>> {
+        let headers = new HttpHeaders();
+        headers = headers.set('Accept', 'application/pdf');
+        return this.http.get<any>(`${this.resourceUrl}/generate-pdf`, { headers: headers, responseType: 'blob' as 'json' });
     }
 }
