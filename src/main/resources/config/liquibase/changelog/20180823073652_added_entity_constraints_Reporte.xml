@@ -12,7 +12,7 @@
                                  baseTableName="reporte"
                                  constraintName="fk_reporte_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="jhi_user"/>
+                                 referencedTableName="user_credentials"/>
 
     </changeSet>
 </databaseChangeLog>

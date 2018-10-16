@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="wiki">
-            <h2><span jhiTranslate="healthSecurityWebApp.wiki.detail.title">Wiki</span> {{wiki.id}}</h2>
+            <h2><span>Glosario HSEQ</span> {{wiki.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
@@ -25,13 +25,13 @@
                 <dt><span jhiTranslate="healthSecurityWebApp.wiki.tema">Tema</span></dt>
                 <dd>
                     <div *ngIf="wiki.tema">
-                        <a [routerLink]="['/tema', wiki.tema?.id, 'view']">{{wiki.tema?.id}}</a>
+                        <a [routerLink]="['/tema', wiki.tema?.id, 'view']">{{wiki.tema?.nombre}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="healthSecurityWebApp.wiki.categoria">Categoria</span></dt>
                 <dd>
                     <div *ngIf="wiki.categoria">
-                        <a [routerLink]="['/categoria', wiki.categoria?.id, 'view']">{{wiki.categoria?.id}}</a>
+                        <a [routerLink]="['/categoria', wiki.categoria?.id, 'view']">{{wiki.categoria?.nombre}}</a>
                     </div>
                 </dd>
             </dl>

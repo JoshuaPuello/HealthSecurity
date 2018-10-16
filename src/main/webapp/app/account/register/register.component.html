@@ -1,26 +1,26 @@
 <div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 jhiTranslate="register.title">Registration</h1>
+            <h1 >Registro</h1>
 
-            <div class="alert alert-success" *ngIf="success" jhiTranslate="register.messages.success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
+            <div class="alert alert-success" *ngIf="success" >
+                <strong>¡Registro exitoso!</strong> Por favor verifica tu bandeja de correo principal o spam.
             </div>
 
-            <div class="alert alert-danger" *ngIf="error" jhiTranslate="register.messages.error.fail">
-                <strong>Registration failed!</strong> Please try again later.
+            <div class="alert alert-danger" *ngIf="error" >
+                <strong>¡Registro fallido!</strong> Por favor, intente nuevamente.
             </div>
 
-            <div class="alert alert-danger" *ngIf="errorUserExists" jhiTranslate="register.messages.error.userexists">
-                <strong>Login name already registered!</strong> Please choose another one.
+            <div class="alert alert-danger" *ngIf="errorUserExists" >
+                <strong>¡Un usuario con estos datos ya se encuentra registrado!</strong> Por favor, modifícalos.
             </div>
 
-            <div class="alert alert-danger" *ngIf="errorEmailExists" jhiTranslate="register.messages.error.emailexists">
-                <strong>Email is already in use!</strong> Please choose another one.
+            <div class="alert alert-danger" *ngIf="errorEmailExists" >
+                <strong>¡El correo ingresado se encuentra en uso!</strong> Por favor, ingresa uno diferente.
             </div>
 
-            <div class="alert alert-danger" *ngIf="doNotMatch" jhiTranslate="global.messages.error.dontmatch">
-                The password and its confirmation do not match!
+            <div class="alert alert-danger" *ngIf="doNotMatch" >
+                ¡Las contraseñas ingresadas deben coincidir!
             </div>
         </div>
     </div>
@@ -32,20 +32,17 @@
                     <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="{{'global.form.username.placeholder' | translate}}"
                             required minlength="1" maxlength="50" pattern="^[_.@A-Za-z0-9-]*$">
                     <div *ngIf="login.dirty && login.invalid">
-                        <small class="form-text text-danger" *ngIf="login.errors.required" jhiTranslate="register.messages.validate.login.required">
-                            Your username is required.
+                        <small class="form-text text-danger" *ngIf="login.errors.required" >
+                            Tu nombre de usuario es requerido.
                         </small>
-                        <small class="form-text text-danger" *ngIf="login.errors.minlength"
-                                jhiTranslate="register.messages.validate.login.minlength">
-                            Your username is required to be at least 1 character.
+                        <small class="form-text text-danger" *ngIf="login.errors.minlength">
+                            Tu nombre de usuario es requerido.
                         </small>
-                        <small class="form-text text-danger" *ngIf="login.errors.maxlength"
-                                jhiTranslate="register.messages.validate.login.maxlength">
-                            Your username cannot be longer than 50 characters.
+                        <small class="form-text text-danger" *ngIf="login.errors.maxlength">
+                            Tu nombre de usuario no puede tener más de 50 caracteres.
                         </small>
-                        <small class="form-text text-danger" *ngIf="login.errors.pattern"
-                               jhiTranslate="register.messages.validate.login.pattern">
-                            Your username can only contain letters and digits.
+                        <small class="form-text text-danger" *ngIf="login.errors.pattern">
+                            Tu nombre de usuario solo puede contener números y letras.
                         </small>
                     </div>
                 </div>
@@ -54,21 +51,17 @@
                     <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="{{'global.form.email.placeholder' | translate}}"
                             [(ngModel)]="registerAccount.email" minlength=5 maxlength=254 email required>
                     <div *ngIf="email.dirty && email.invalid">
-                        <small class="form-text text-danger" *ngIf="email.errors.required"
-                                jhiTranslate="global.messages.validate.email.required">
-                            Your email is required.
+                        <small class="form-text text-danger" *ngIf="email.errors.required">
+                            Tu correo es requerido.
                         </small>
-                        <small class="form-text text-danger" *ngIf="email.errors.invalid"
-                               jhiTranslate="global.messages.validate.email.invalid">
-                            Your email is invalid.
+                        <small class="form-text text-danger" *ngIf="email.errors.invalid">
+                            Tu correo es inválido.
                         </small>
-                        <small class="form-text text-danger" *ngIf="email.errors.minlength"
-                               jhiTranslate="global.messages.validate.email.minlength">
-                            Your email is required to be at least 5 characters.
+                        <small class="form-text text-danger" *ngIf="email.errors.minlength">
+                            Tu correo debe contener al menos 5 caracteres.
                         </small>
-                        <small class="form-text text-danger" *ngIf="email.errors.maxlength"
-                               jhiTranslate="global.messages.validate.email.maxlength">
-                            Your email cannot be longer than 100 characters.
+                        <small class="form-text text-danger" *ngIf="email.errors.maxlength">
+                            Tu correo no puede tener más de 100 caracteres.
                         </small>
                     </div>
                 </div>
@@ -77,17 +70,14 @@
                     <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
                             [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
                     <div *ngIf="password.dirty && password.invalid">
-                        <small class="form-text text-danger" *ngIf="password.errors.required"
-                                jhiTranslate="global.messages.validate.newpassword.required">
-                            Your password is required.
+                        <small class="form-text text-danger" *ngIf="password.errors.required">
+                            Tu contraseña es requerida.
                         </small>
-                        <small class="form-text text-danger" *ngIf="password.errors.minlength"
-                                jhiTranslate="global.messages.validate.newpassword.minlength">
-                            Your password is required to be at least 4 characters.
+                        <small class="form-text text-danger" *ngIf="password.errors.minlength">
+                            Tu contraseña no puede ser menor a 4 caracteres.
                         </small>
-                        <small class="form-text text-danger" *ngIf="password.errors.maxlength"
-                                jhiTranslate="global.messages.validate.newpassword.maxlength">
-                            Your password cannot be longer than 50 characters.
+                        <small class="form-text text-danger" *ngIf="password.errors.maxlength">
+                            Tu contraseña no puede tener más de 50 caracteres.
                         </small>
                     </div>
                     <jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar>
@@ -97,22 +87,19 @@
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
                             [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
                     <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
-                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
-                               jhiTranslate="global.messages.validate.confirmpassword.required">
-                            Your confirmation password is required.
+                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required">
+                            Tu confirmación de contraseña es requerida.
                         </small>
-                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.minlength"
-                              jhiTranslate="global.messages.validate.confirmpassword.minlength">
-                            Your confirmation password is required to be at least 4 characters.
+                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.minlength">
+                            Tu confirmación de contraseña no puede ser menor a 4 caracteres.
                         </small>
-                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.maxlength"
-                               jhiTranslate="global.messages.validate.confirmpassword.maxlength">
-                            Your confirmation password cannot be longer than 50 characters.
+                        <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.maxlength">
+                            Tu confirmación de contraseña no puede tener más de 50 caracteres.
                         </small>
                     </div>
                 </div>
 
-                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary" jhiTranslate="register.form.button">Register</button>
+                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary" >Registrar</button>
             </form>
             <p></p>
         </div>

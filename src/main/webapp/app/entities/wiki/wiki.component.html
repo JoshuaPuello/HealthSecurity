@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="healthSecurityWebApp.wiki.home.title">Wikis</span>
+        <span >Glosario HSEQ</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-wiki" [routerLink]="['/wiki/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="healthSecurityWebApp.wiki.home.createLabel">
-            Create new Wiki
+            <span>
+            Crear nuevo glosario
             </span>
         </button>
     </h2>
@@ -29,17 +29,16 @@
                     <a *ngIf="wiki.imagen" (click)="openFile(wiki.imagenContentType, wiki.imagen)">
                         <img [src]="'data:' + wiki.imagenContentType + ';base64,' + wiki.imagen" style="max-height: 30px;" alt="wiki image"/>
                     </a>
-                    <span *ngIf="wiki.imagen">{{wiki.imagenContentType}}, {{byteSize(wiki.imagen)}}</span>
                 </td>
                 <td>{{wiki.descripcion}}</td>
                 <td>
                     <div *ngIf="wiki.tema">
-                        <a [routerLink]="['../tema', wiki.tema?.id, 'view' ]" >{{wiki.tema?.id}}</a>
+                        <a [routerLink]="['../tema', wiki.tema?.id, 'view' ]" >{{wiki.tema?.nombre}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="wiki.categoria">
-                        <a [routerLink]="['../categoria', wiki.categoria?.id, 'view' ]" >{{wiki.categoria?.id}}</a>
+                        <a [routerLink]="['../categoria', wiki.categoria?.id, 'view' ]" >{{wiki.categoria?.nombre}}</a>
                     </div>
                 </td>
                 <td class="text-right">

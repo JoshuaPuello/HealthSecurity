@@ -115,47 +115,47 @@ public class ReporteServiceImpl implements ReporteService {
     	LocalDate date = LocalDate.now();
     	Map<String,String> data = new HashMap<String,String>();
         
-    	Query queryRecibidos = em.createNativeQuery("SELECT count(*) as recibidos FROM hsplatfo_database.reporte;");
+    	Query queryRecibidos = em.createNativeQuery("SELECT count(*) as recibidos FROM reporte;");
 
     	int recibidos = Integer.parseInt(queryRecibidos.getResultList().get(0).toString());
     	
     	System.out.println("Recibidos: " + recibidos);
     	
-    	Query queryAprobados = em.createNativeQuery("SELECT count(*) aprobados FROM hsplatfo_database.respuesta where estado = 'ACEPTADO';");
+    	Query queryAprobados = em.createNativeQuery("SELECT count(*) aprobados FROM respuesta where estado = 'ACEPTADO';");
     	int aprobados = Integer.parseInt(queryAprobados.getResultList().get(0).toString());
     	
-    	Query queryRechazados = em.createNativeQuery("SELECT count(*) rechazados FROM hsplatfo_database.respuesta where estado = 'RECHAZADO';");
+    	Query queryRechazados = em.createNativeQuery("SELECT count(*) rechazados FROM respuesta where estado = 'RECHAZADO';");
     	int rechazados = Integer.parseInt(queryRechazados.getResultList().get(0).toString());
     	
-    	Query queryPendientes = em.createNativeQuery("SELECT count(*) pendientes FROM hsplatfo_database.respuesta where estado = 'PENDIENTE';");
+    	Query queryPendientes = em.createNativeQuery("SELECT count(*) pendientes FROM respuesta where estado = 'PENDIENTE';");
     	int pendientes = Integer.parseInt(queryPendientes.getResultList().get(0).toString());
     	
-    	Query queryIncidentes = em.createNativeQuery("SELECT count(*) incidentes FROM hsplatfo_database.reporte where tipo_evento = 'INCIDENTE';");
+    	Query queryIncidentes = em.createNativeQuery("SELECT count(*) incidentes FROM reporte where tipo_evento = 'INCIDENTE';");
     	int incidentes = Integer.parseInt(queryIncidentes.getResultList().get(0).toString());
     	
-    	Query queryAccidentes = em.createNativeQuery("SELECT count(*) accidentes FROM hsplatfo_database.reporte where tipo_evento = 'ACCIDENTE';");
+    	Query queryAccidentes = em.createNativeQuery("SELECT count(*) accidentes FROM reporte where tipo_evento = 'ACCIDENTE';");
     	int accidentes = Integer.parseInt(queryAccidentes.getResultList().get(0).toString());
     	
-    	Query queryIncidentesLeve = em.createNativeQuery("SELECT count(*) incidentesLeve FROM hsplatfo_database.reporte where tipo_evento = 'INCIDENTE' and valoracion = 'LEVE';");
+    	Query queryIncidentesLeve = em.createNativeQuery("SELECT count(*) incidentesLeve FROM reporte where tipo_evento = 'INCIDENTE' and valoracion = 'LEVE';");
     	int incidentesLeves = Integer.parseInt(queryIncidentesLeve.getResultList().get(0).toString());
     	
-    	Query queryIncidentesModerado = em.createNativeQuery("SELECT count(*) incidentesModerado FROM hsplatfo_database.reporte where tipo_evento = 'INCIDENTE' and valoracion = 'MODERADO';");
+    	Query queryIncidentesModerado = em.createNativeQuery("SELECT count(*) incidentesModerado FROM reporte where tipo_evento = 'INCIDENTE' and valoracion = 'MODERADO';");
     	int incidentesModerado = Integer.parseInt(queryIncidentesModerado.getResultList().get(0).toString());
     	
-    	Query queryIncidentesCritico = em.createNativeQuery("SELECT count(*) incidentesCritico FROM hsplatfo_database.reporte where tipo_evento = 'INCIDENTE' and valoracion = 'CRITICO';");
+    	Query queryIncidentesCritico = em.createNativeQuery("SELECT count(*) incidentesCritico FROM reporte where tipo_evento = 'INCIDENTE' and valoracion = 'CRITICO';");
     	int incidentesCritico = Integer.parseInt(queryIncidentesCritico.getResultList().get(0).toString());
     	
-    	Query queryAccidentesLeve = em.createNativeQuery("SELECT count(*) accidentesLeve FROM hsplatfo_database.reporte where tipo_evento = 'ACCIDENTE' and valoracion = 'LEVE';");
+    	Query queryAccidentesLeve = em.createNativeQuery("SELECT count(*) accidentesLeve FROM reporte where tipo_evento = 'ACCIDENTE' and valoracion = 'LEVE';");
     	int accidentesLeve = Integer.parseInt(queryAccidentesLeve.getResultList().get(0).toString());
     	
-    	Query queryAccidentesModerado = em.createNativeQuery("SELECT count(*) accidentesModerado FROM hsplatfo_database.reporte where tipo_evento = 'ACCIDENTE' and valoracion = 'MODERADO';");
+    	Query queryAccidentesModerado = em.createNativeQuery("SELECT count(*) accidentesModerado FROM reporte where tipo_evento = 'ACCIDENTE' and valoracion = 'MODERADO';");
     	int accidentesModerado = Integer.parseInt(queryAccidentesModerado.getResultList().get(0).toString());
     	
-    	Query queryAccidentesCritico = em.createNativeQuery("SELECT count(*) accidentesCritico FROM hsplatfo_database.reporte where tipo_evento = 'ACCIDENTE' and valoracion = 'CRITICO';");
+    	Query queryAccidentesCritico = em.createNativeQuery("SELECT count(*) accidentesCritico FROM reporte where tipo_evento = 'ACCIDENTE' and valoracion = 'CRITICO';");
     	int accidentesCritico = Integer.parseInt(queryAccidentesCritico.getResultList().get(0).toString());
     	
-    	double porcentajeIncidentes = incidentes / recibidos * 100;
-    	double porcentajeAccidentes = accidentes / recibidos * 100;
+    	double porcentajeIncidentes = (incidentes == 0 || recibidos == 0) ? 0 : incidentes / recibidos * 100;
+    	double porcentajeAccidentes = (accidentes == 0 || recibidos == 0) ? 0 : accidentes / recibidos * 100;
     	
     	data.put("fecha", date.toString());
         data.put("recibidos", recibidos + "");

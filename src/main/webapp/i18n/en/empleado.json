@@ -4,14 +4,14 @@
         "empleado" : {
             "home": {
                 "title": "Empleados",
-                "createLabel": "Create a new Empleado",
-                "createOrEditLabel": "Create or edit a Empleado"
+                "createLabel": "Crear nuevo empleado",
+                "createOrEditLabel": "Crear o editar empleado"
             },
-            "created": "A new Empleado is created with identifier {{ param }}",
-            "updated": "A Empleado is updated with identifier {{ param }}",
-            "deleted": "A Empleado is deleted with identifier {{ param }}",
+            "created": "Un nuevo empleado ha sido creado con el identificador {{ param }}",
+            "updated": "Un empleado ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un empleado ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Empleado {{ id }}?"
+                "question": "Estás seguro que quieres eliminar empleado con el id {{ id }}?"
             },
             "detail": {
                 "title": "Empleado"

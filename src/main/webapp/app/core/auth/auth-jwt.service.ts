@@ -3,12 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { UserService } from '../user/user.service';
 
 import { SERVER_API_URL } from 'app/app.constants';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServerProvider {
-    constructor(private http: HttpClient, private $localStorage: LocalStorageService, private $sessionStorage: SessionStorageService) {}
+    constructor(
+        private http: HttpClient,
+        private $localStorage: LocalStorageService,
+        private $sessionStorage: SessionStorageService,
+        private userService: UserService
+    ) {}
 
     getToken() {
         return this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken');
@@ -20,7 +26,24 @@ export class AuthServerProvider {
             password: credentials.password,
             rememberMe: credentials.rememberMe
         };
+        // return
+
+        // const resp = this.http.post(SERVER_API_URL + 'api/authenticate', data, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
+
         return this.http.post(SERVER_API_URL + 'api/authenticate', data, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
+        // resp.subscribe(
+        //         data => {
+        //             this.userService.find(credentials.username).subscribe(
+        //                 val => { if (!(val.body.authorities.includes('ROLE_ADMIN'))){
+        //                     console.log("No es administrador")
+        //                     return null;
+        //                 }}
+        //             );
+        //         },
+        //         err => {}
+        //     );
+
+        //     return resp;
 
         function authenticateSuccess(resp) {
             const bearerToken = resp.headers.get('Authorization');

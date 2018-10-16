@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title th:text="#{email.activation.title}">JHipster creation</title>
+    <title th:text="#{email.activation.title}">Creación de cuenta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
     <style>
@@ -32,10 +32,10 @@
 
         <div style="margin: 0% 17.4%">
             <p th:text="#{email.activation.greeting(${user.login})}">
-                Dear
+                Apreciado
             </p>
             <p>
-                Se ha creado tu cuenta en HealthSecurityWeb, por favor ingrese al siguiente enlace para terminar de configurar su cuenta:
+                Se ha creado tu cuenta en HealthSecurity, por favor ingrese al siguiente enlace para terminar de configurar su cuenta:
             </p>
 
             <div style="text-align: center;">
@@ -45,9 +45,9 @@
             </div>
 
             <p>
-                <span th:text="#{email.activation.text2}">Regards, </span>
+                <span>Cordialmente, </span>
                 <br/>
-                <em th:text="#{email.signature}">JHipster.</em>
+                <em>Equipo HealthSecurity.</em>
             </p>
         </div>
 

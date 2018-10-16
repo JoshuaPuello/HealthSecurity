@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-wiki-heading" jhiTranslate="healthSecurityWebApp.wiki.home.createOrEditLabel">Create or edit a Wiki</h2>
+            <h2 id="jhi-wiki-heading">Crea o edita Glosario</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!wiki.id">
@@ -47,7 +47,7 @@
                     <label class="form-control-label" jhiTranslate="healthSecurityWebApp.wiki.tema" for="field_tema">Tema</label>
                     <select class="form-control" id="field_tema" name="tema" [(ngModel)]="wiki.tema"  required>
                         <option *ngIf="!editForm.value.tema" [ngValue]="null" selected></option>
-                        <option [ngValue]="temaOption.id === wiki.tema?.id ? wiki.tema : temaOption" *ngFor="let temaOption of temas; trackBy: trackTemaById">{{temaOption.id}}</option>
+                        <option [ngValue]="temaOption.id === wiki.tema?.id ? wiki.tema : temaOption" *ngFor="let temaOption of temas; trackBy: trackTemaById">{{temaOption.nombre}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.tema?.dirty && editForm.controls.tema?.invalid)">
@@ -60,7 +60,7 @@
                     <label class="form-control-label" jhiTranslate="healthSecurityWebApp.wiki.categoria" for="field_categoria">Categoria</label>
                     <select class="form-control" id="field_categoria" name="categoria" [(ngModel)]="wiki.categoria"  required>
                         <option *ngIf="!editForm.value.categoria" [ngValue]="null" selected></option>
-                        <option [ngValue]="categoriaOption.id === wiki.categoria?.id ? wiki.categoria : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackCategoriaById">{{categoriaOption.id}}</option>
+                        <option [ngValue]="categoriaOption.id === wiki.categoria?.id ? wiki.categoria : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackCategoriaById">{{categoriaOption.nombre}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.categoria?.dirty && editForm.controls.categoria?.invalid)">

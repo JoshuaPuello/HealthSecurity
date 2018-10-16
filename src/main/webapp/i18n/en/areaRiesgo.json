@@ -4,14 +4,14 @@
         "areaRiesgo" : {
             "home": {
                 "title": "Area Riesgos",
-                "createLabel": "Create a new Area Riesgo",
-                "createOrEditLabel": "Create or edit a Area Riesgo"
+                "createLabel": "Crear nueva área de riesgo",
+                "createOrEditLabel": "Crear o editar área de riesgo"
             },
-            "created": "A new Area Riesgo is created with identifier {{ param }}",
-            "updated": "A Area Riesgo is updated with identifier {{ param }}",
-            "deleted": "A Area Riesgo is deleted with identifier {{ param }}",
+            "created": "Una nueva área de riesgo ha sido creada con el identificador {{ param }}",
+            "updated": "Un área de riesgo ha sido actualizada con el identificador {{ param }}",
+            "deleted": "Un área de riesgo ha sido eliminada con el identificador {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Area Riesgo {{ id }}?"
+                "question": "Estás seguro que quieres eliminar la área de riesgo con id {{ id }}?"
             },
             "detail": {
                 "title": "Area Riesgo"
