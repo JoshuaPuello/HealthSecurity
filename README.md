@@ -3,7 +3,7 @@ HealthSecurity has been developed as a requirement for the graduation project su
 
 This project is hosted on Amazon AWS, using Mysql as a database engine in RDS, and it's built using Java 1.8, Spring boot, JWT, Angular, and so forth.
 
-Project: http://health-security-application-env.y3upm87f2j.us-east-1.elasticbeanstalk.com/#/
+Project: http://health-security-application-env.y3upm87f2j.us-east-1.elasticbeanstalk.com/
 
 ## Dependencies
 Before to run this project, you must install the following dependencies on your machine:
